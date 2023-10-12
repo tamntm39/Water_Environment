@@ -14,8 +14,12 @@ namespace Water_Environment.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            //var customers = database.Customers.ToList();
             return View();
         }
+        //public ActionResult Login()
+        //{
+        //    //var customers = database.Customers.ToList();
+        //    return View();
+        //}
     }
 }
