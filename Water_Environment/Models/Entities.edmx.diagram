@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="66e75dcd18674c6fab09355b5ae820dc" Name="Diagram1">
+        <EntityTypeShape EntityType="Water_Environment_Entities.ActivitiesAndNew" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_Environment_Entities.Category" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_Environment_Entities.Comment" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_Environment_Entities.Permission" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_Environment_Entities.User" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="Water_Environment_Entities.activitiesandnews_categoryid_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Water_Environment_Entities.activitiesandnews_createby_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Water_Environment_Entities.comment_postid_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Water_Environment_Entities.category_createby_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Water_Environment_Entities.comment_usercomment_foreign" ManuallyRouted="false" />
+        <AssociationConnector Association="Water_Environment_Entities.users_userpermission_foreign" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
