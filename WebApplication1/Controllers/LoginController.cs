@@ -15,6 +15,7 @@ namespace WebApplication1.Controllers
         public ActionResult Index()
         {
             var a = 2;
+            var a = 5\;
             var customers = database.Customers.ToList();
             return View(customers);
         }
