@@ -1,0 +1,276 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/_MasterLayout.cshtml";
+}
+
+<div>
+    @* Header *@
+    <div class="header">
+        <div class="head-left">
+            <div class="head-left-email">
+                <a href="mailto:info@educationpro.com">
+                    <i class='bx bx-envelope bx-tada'></i> nhom12@gmail.com
+                </a>
+            </div>
+            <div class="head-left-phone">
+                <a href="tel:+9779813639131">
+                    <i class='bx bxs-phone bx-tada'></i> 0818202648
+                </a>
+            </div>
+        </div>
+
+        <div class="box">
+            <input type="text" placeholder="Search...">
+            <a><i class='bx bx-search-alt-2 bx-tada'></i></a>
+        </div>
+
+        <div class="head-right">
+            <div class="login-block">
+                <a href="~/Home/Login"><i class='bx bx-user-circle'></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-header" id="myHeader">
+        <div class="container">
+            <div class="logo-wrap">
+                <img src="~/Images/logo_home.png" alt="Logo Image" />
+            </div>
+            <div class="nav-wrap">
+                <nav class="nav-desktop">
+                    <ul class="menu-list">
+                        <li><a href="~/Home/Home">Trang chủ</a></li>
+                        <li class="menu-parent">
+                            Giới thiệu
+                            <ul class="sub-menu">
+                                <li><a href="#">Tổng quát</a></li>
+                                <li><a href="#">Thông tin nhóm</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-parent">
+                            Hoạt động
+                            <ul class="sub-menu">
+                                <li><a href="#">Đại dương</a></li>
+                                <li><a href="#">Nước ngọt</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-parent">
+                            Tin tức
+                            <ul class="sub-menu">
+                                <li><a href="#">Cập nhật mới nhẩt</a></li>
+                                <li><a href="#">Câu chuyện của chúng tôi</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="">Tham gia</a></li>
+                        <li><a href="">Liên hệ</a></li>
+                    </ul>
+                </nav>
+                <div id="bar">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div id="close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* Body *@
+    <div class="banner">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/Images/beach_img_1.jpg" alt="Image of Bannner" />
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Images/beach_img_2.jpg" alt="Image of Bannner" />
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Images/ocean.jpg" alt="Image of Bannner" />
+                </div>
+                <div class="carousel-item">
+                    <img src="~/Images/explored-hires.jpg" alt="Image of Banner" />
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+        </div>
+    </div>
+
+    <div class="page-heading">
+        <div class="container-box">
+            <h2>TIN MỚI NHẤT</h2>
+        </div>
+
+        <div class="container-box">
+            <div class="popular-container">
+
+                <div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+                    <div class="img-wrap">
+                        <img src="~/Images/s11.jpg" alt="courses picture" />
+                    </div>
+                    <a href="https://vov.gov.vn/ha-noi-nghien-cuu-xay-cong-ngam-o-song-to-lich-dtnew-146395"
+                       class="learn-desining-banner"
+                       target="_blank">Báo môi trường >>></a>
+
+                    <div class="box-body">
+                        <p>
+                            Hà Nội nghiên cứu xây cống ngầm ở sông Tô Lịch
+                            Gần 12 km cống dự kiến chạy ngầm dưới đáy sông sẽ dẫn nước thải về nhà máy Yên Xá để xử lý.
+                            Ngày 4/2, tại cuộc kiểm tra tiến độ dự án hệ thống xử lý nước thải Yên Xá
+                        </p>
+                        <section>
+                            <p><span>Ngày:</span> 02/06/2023</p>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+                    <div class="img-wrap">
+                        <img src="~/Images/1111.jpg" alt="courses picture" />
+                    </div>
+                    <a href="#"
+                       class="learn-desining-banner"
+                       target="_blank">Báo môi trường >>></a>
+                    <div class="box-body">
+                        <p>
+                            Nước thải ô nhiễm đang khiến 2.000 con sông chết dần.
+                            Nước ta có khoảng hơn 2.000 con sông có chiều dài từ 10km trở lên, mang lại lợi thế rất lớn
+                            trong việc phát triển kinh tế - xã hội (KTXH). Nhiều con sông đang bị ô nhiễm nghiêm trọng
+                        </p>
+                        <section>
+                            <p><span>Ngày:</span> 03/05/2023</p>
+                        </section>
+                    </div>
+                </div>
+
+                <div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+                    <div class="img-wrap">
+                        <img src="~/Images/s1.jpg" alt="courses picture" />
+                    </div>
+                    <a href="http://dwrm.gov.vn/index.php?language=vi&nv=news&op=Hoat-dong-cua-Cuc-Tin-lien-quan/Nuoc-thai-o-nhiem-dang-khien-2-000-con-song-chet-dan-7083"
+                       class="learn-desining-banner"
+                       target="_blank">Báo môi trường >>></a>
+
+                    <div class="box-body">
+                        <p>
+                            Sông Bắc Hưng Hải bị ô nhiễm nguồn nước nghiêm trọng.
+                            TTO - Bắc Hưng Hải tưới 110.000ha canh tác; cấp nước sinh hoạt cho hơn
+                            3 triệu người; tiêu nước, chống ngập úng cho toàn bộ diện tích 4 tỉnh,
+                            thành phố Hà Nội, Hưng Yên,Bắc Ninh và Hải Dương...
+                        </p>
+                        <section>
+                            <p><span>Ngày:</span> 21/09/2022</p>
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    @* Footer *@
+    <div class="footer">
+        <div class="top-footer">
+            <div class="space"></div>
+            <div class="left-head-ft" style="padding-bottom: 30px;">
+                <h3>
+                    <b>
+                        Contact
+                    </b>
+                </h3>
+                <hr style="height: 3px; width: 120px;" />
+                <p style="font-size: 15px;">
+                    Hãy hành động để đưa ra những giải pháp thực tế để
+                    giảm thiểu tình trạng ô nhiễm môi trường nước
+                </p>
+                <hr class="foot-hr" />
+                <a href="mailto:info@educationpro.com">
+                    <i class="fas fa-envelope"></i> nhom12@gmail.com
+                </a>
+                <hr class="foot-hr" />
+                <a href="tel:+9779813639131">
+                    <i class="fas fa-phone"></i> 0818202648
+                </a>
+                <hr class="foot-hr" />
+                <a href="tel:+9779813639131">
+                    <i class='bx bxs-location-plus'></i>
+                    828 Đ. Sư Vạn Hạnh, Phường 12, Quận 10, Thành phố Hồ Chí Minh
+                </a>
+            </div>
+            <div class="space"></div>
+
+            <div class="right-head-ft">
+                <h3>
+                    <b>
+                        Feedback
+                    </b>
+                </h3>
+                <hr style="height: 3px; width: 120px;" />
+                <input type="text" name="name" value="" placeholder="Your email*" />
+                <textarea placeholder="write you feedback*"></textarea>
+                <button class="btn">Send</button>
+            </div>
+        </div>
+
+        <div class="mid-footer" style="padding-top: 20px;">
+            <div class="mid-footer-item">
+                <hr class="foot-hr" />
+            </div>
+            <div class="mid-footer-item icon">
+                <a href=""><i class="fab fa-facebook-square"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-youtube"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class='bx bxl-tiktok'></i></a>
+                <a href=""><i class='bx bxl-telegram'></i></a>
+            </div>
+            <div class="mid-footer-item">
+                <hr class="foot-hr" />
+            </div>
+        </div>
+
+        <div class="bottom-footer" style="padding-top: 30px;">
+            <p style="font-size: 13px;">
+                Copyright 2023&emsp;&emsp;|&emsp;&emsp;&emsp;Hãy cùng nhau bảo vệ nguồn nước.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!------------------------------------------- Back to Top ----------------------------------------->
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <i class='bx bxs-arrow-to-top'></i>
+</button>
+
+<script>
+        let mybutton = document.getElementById("myBtn");
+
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+</script>
+@* ------------------------------------------------------------------------------------------------- *@

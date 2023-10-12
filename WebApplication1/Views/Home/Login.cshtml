@@ -1,0 +1,294 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_MasterLayout.cshtml";
+}
+
+<div class="login">
+    <img src="~/Images/eberhard-grossgasteiger-cs0sK0gzqCU-unsplash.jpg" alt="image" class="login__bg" />
+
+    <form action="" class="login__form">
+        <div class="contain-btn" onclick="BackToHome()"> 
+            <button class="btn" id="btn" ><i class="ri-arrow-left-line"></i></button>
+        </div>
+
+        @* ===================================================== *@
+        <h1 class="login__title" id="loginT">Login</h1>
+        <h1 class="login__title" id="registerT">Register</h1>
+        @* ===================================================== *@
+
+        <div class="login__inputs">
+            <div class="login__box">
+                <input type="email"
+                       placeholder="Email ID" required
+                       class="login__input"
+                       id="username"
+                       onkeydown="preventEnterKey(event)"/>
+                       
+                <i class="ri-mail-fill"></i>
+            </div>
+
+            <div class="login__box" id="Psw" >
+                <input type="password"
+                       placeholder="Password" required
+                       class="login__input"
+                       id="password"
+                       onkeydown="preventEnterKey(event)"/>
+
+                <div class="cont-icon">
+                    <i class="ri-eye-line" id="eye-open" onclick="toggleEyeClose()"></i>
+                    <i class="ri-eye-close-line" id="eye-close" onclick="toggleEyeOpen()"></i>
+                    <i class="ri-lock-2-fill"></i>
+                </div>
+            </div>
+            
+            <div class="login__box" id="confirmPsw" style="display: none;">
+                <input type="password"
+                       placeholder="Confirm Password" required
+                       class="login__input"
+                       id="Cpassword"
+                       onkeydown="preventEnterKey(event)"/>
+
+                <div class="cont-icon">
+                    <i class="ri-eye-line" id="eye-open2" onclick="toggleEyeClose2()"></i>
+                    <i class="ri-eye-close-line" id="eye-close2" onclick="toggleEyeOpen2()"></i>
+                    <i class="ri-lock-2-fill"></i>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="login__check">
+            <div class="login__check-box">
+                <input type="checkbox" class="login__check-input" id="user-check" />
+                <label for="user-check" class="login__check-label">Remember me</label>
+            </div>
+
+            <a href="#" class="login__forgot">Forgot Password?</a>
+        </div>
+
+        @* ========================================================== *@
+        <button type="button" class="login__button" id="loginB" onclick="LoginForm()">Login</button>
+        <button type="button" class="login__button" id="registerB" onclick="RegisterForm()">Register</button>
+        @* =========================================================== *@
+
+
+        @* ========================================================== *@
+        <div class="login__register" id="login__register">
+            Don't have an account?
+            <a href="#" onclick="Register()" id="register">Register</a>
+        </div>
+
+        <div class="login__register" id="login__login">
+            You have an account?
+            <a href="#" onclick="Login()" id="login">Login</a>
+        </div>
+        @* ========================================================== *@
+    </form>
+</div>
+
+<script>
+    function LoginForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username === "" || password === "") {
+            alert("Fill in blank..!");
+            
+        }
+        else{
+            window.location.href = "Home";
+        }
+    }
+    function RegisterForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var Cpassword = document.getElementById("Cpassword").value;
+
+        if (username === "" || password === "" || Cpassword === "") {
+            alert("Fill in blank..!");
+        }
+        else if (password.length < 8) {
+            alert("At least 8 characters!");
+        }
+        else if (!/[A-Z]/.test(password)) {
+            alert("At least a upper letter!");
+        }
+        else if (!/[a-z]/.test(password)) {
+            alert("At least a lower letter!");
+        }
+        else if (!/\d/.test(password)) {
+            alert("At least a number");
+        }
+        else if (password !== Cpassword) {
+            alert("Password not the same..!")
+        }
+        else {
+            window.location.href = "Login";
+        }
+    }
+    function BackToHome() {
+        window.location.href = "Home";
+    }
+</script>
+
+<script>
+    function toggleEyeOpen() {
+        var eyeOpen = document.getElementById("eye-open");
+        var eyeClose = document.getElementById("eye-close");
+
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        }
+
+        if (eyeClose.style.display === "block") {
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        }
+        else {
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        }
+    }
+    function toggleEyeClose() {
+        var eyeOpen = document.getElementById("eye-open");
+        var eyeClose = document.getElementById("eye-close");
+
+        var x = document.getElementById("password");
+        if (x.type === "text") {
+            x.type = "password";
+        }
+
+        if (eyeClose.style.display === "none") {
+            eyeClose.style.display = "block";
+            eyeOpen.style.display = "none";
+        }
+        else {
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        }
+    }
+    function toggleEyeOpen2() {
+        var eyeOpen2 = document.getElementById("eye-open2");
+        var eyeClose2 = document.getElementById("eye-close2");
+
+        var y = document.getElementById("Cpassword");
+        if (y.type === "password") {
+            y.type = "text";
+        }
+        if (eyeClose2.style.display === "block") {
+            eyeClose2.style.display = "none";
+            eyeOpen2.style.display = "block";
+        }
+        else {
+            eyeClose2.style.display = "none";
+            eyeOpen2.style.display = "block";
+        }
+    }
+    function toggleEyeClose2() {
+        var eyeOpen2 = document.getElementById("eye-open2");
+        var eyeClose2 = document.getElementById("eye-close2");
+
+        var y = document.getElementById("Cpassword");
+        if (y.type === "text") {
+            y.type = "password";
+        }
+
+        if (eyeClose2.style.display === "none") {
+            eyeClose2.style.display = "block";
+            eyeOpen2.style.display = "none";
+        }
+        else {
+            eyeClose2.style.display = "none";
+            eyeOpen2.style.display = "block";
+        }
+    }
+</script>
+
+<script>
+    function Register() {
+        var registerTitle = document.getElementById("registerT");
+        var loginTitle = document.getElementById("loginT");
+        var registerNotice = document.getElementById("login__register");
+        var loginNotice = document.getElementById("login__login");
+        var registerButton = document.getElementById("registerB");
+        var loginButton = document.getElementById("loginB");
+        var confirmPassword = document.getElementById("confirmPsw");
+
+        if (registerTitle.style.display === "none" && loginNotice.style.display === "none") {
+            registerTitle.style.display = "block";
+            loginTitle.style.display = "none";
+
+            loginNotice.style.display = "block";
+            registerNotice.style.display = "none";
+
+            registerButton.style.display = "block";
+            loginButton.style.display = "none";
+
+            confirmPassword.removeAttribute("style");
+        }
+        else {
+            registerTitle.style.display = "block";
+            loginTitle.style.display = "none";
+
+            loginNotice.style.display = "block";
+            registerNotice.style.display = "none";
+
+            registerButton.style.display = "block";
+            loginButton.style.display = "none";
+
+            confirmPassword.removeAttribute("style");
+        }
+    }
+    function Login() {
+        var registerTitle = document.getElementById("registerT");
+        var loginTitle = document.getElementById("loginT");
+        var registerNotice = document.getElementById("login__register");
+        var loginNotice = document.getElementById("login__login");
+        var registerButton = document.getElementById("registerB");
+        var loginButton = document.getElementById("loginB");
+        var confirmPassword = document.getElementById("confirmPsw");
+
+        if (loginTitle.style.display === "none" && registerNotice.style.display === "none") {
+            loginTitle.style.display = "block";
+            registerTitle.style.display = "none";
+
+            registerNotice.style.display = "block";
+            loginNotice.style.display = "none";
+
+            loginButton.style.display = "block";
+            registerButton.style.display = "none";
+
+            confirmPassword.style.display = "none";
+        }
+        else {
+            loginTitle.style.display = "block";
+            registerTitle.style.display = "none";
+
+            registerNotice.style.display = "block";
+            loginNotice.style.display = "none";
+
+            loginButton.style.display = "block";
+            registerButton.style.display = "none";
+
+            confirmPassword.style.display = "none";
+        }
+    }
+</script>
+
+<script>
+    function preventEnterKey(event) {
+
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (event.keyCode === 13) {
+            if (username === "" || password === "") {
+                event.preventDefault();
+                alert("Fill in blank..!");
+            }
+        }
+    }
+</script>
