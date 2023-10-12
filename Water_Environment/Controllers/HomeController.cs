@@ -7,10 +7,19 @@ using System.Web.Mvc;
 namespace Water_Environment.Controllers
 {
     public class HomeController : Controller
-    { 
+    {
+        //[Authorize]
         public ActionResult Index()
         {
-            return View();
-        } 
+            
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
     }
 }

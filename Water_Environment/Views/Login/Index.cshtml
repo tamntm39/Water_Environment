@@ -7,33 +7,35 @@
 <div class="login">
     <img src="~/Images/eberhard-grossgasteiger-cs0sK0gzqCU-unsplash.jpg" alt="image" class="login__bg" />
 
-    <form action="" class="login__form">
-        <div class="contain-btn" onclick="BackToHome()"> 
-            <button class="btn" id="btn" ><i class="ri-arrow-left-line"></i></button>
+    <form action="/Login/Index" id="LoginForm" class="login__form" method="post">
+        <div class="contain-btn" onclick="BackToHome()">
+            <button class="btn" id="btn"><i class="ri-arrow-left-line"></i></button>
         </div>
 
         @* ===================================================== *@
         <h1 class="login__title" id="loginT">Login</h1>
         <h1 class="login__title" id="registerT">Register</h1>
         @* ===================================================== *@
-
+        @Html.AntiForgeryToken()
         <div class="login__inputs">
             <div class="login__box">
-                <input type="email"
-                       placeholder="Email ID" required
+                <input type="text"
+                       placeholder="Tài khoản" required
                        class="login__input"
                        id="username"
-                       onkeydown="preventEnterKey(event)"/>
-                       
+                       name="Username"
+                       onkeydown="preventEnterKey(event)" />
+
                 <i class="ri-mail-fill"></i>
             </div>
 
-            <div class="login__box" id="Psw" >
+            <div class="login__box" id="Psw">
                 <input type="password"
-                       placeholder="Password" required
+                       placeholder="Mật khẩu" required
+                       name="Password"
                        class="login__input"
                        id="password"
-                       onkeydown="preventEnterKey(event)"/>
+                       onkeydown="preventEnterKey(event)" />
 
                 <div class="cont-icon">
                     <i class="ri-eye-line" id="eye-open" onclick="toggleEyeClose()"></i>
@@ -41,13 +43,13 @@
                     <i class="ri-lock-2-fill"></i>
                 </div>
             </div>
-            
+
             <div class="login__box" id="confirmPsw" style="display: none;">
                 <input type="password"
                        placeholder="Confirm Password" required
                        class="login__input"
                        id="Cpassword"
-                       onkeydown="preventEnterKey(event)"/>
+                       onkeydown="preventEnterKey(event)" />
 
                 <div class="cont-icon">
                     <i class="ri-eye-line" id="eye-open2" onclick="toggleEyeClose2()"></i>
@@ -69,7 +71,8 @@
         </div>
 
         @* ========================================================== *@
-        <button type="button" class="login__button" id="loginB" onclick="LoginForm()">Login</button>
+        <button type="button" class="login__button" id="loginB" onclick="LoginForm()">Đăng nhập</button>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger " })
         <button type="button" class="login__button" id="registerB" onclick="RegisterForm()">Register</button>
         @* =========================================================== *@
 
@@ -95,10 +98,11 @@
 
         if (username === "" || password === "") {
             alert("Fill in blank..!");
-            
         }
-        else{
-            window.location.href = "Home";
+        else {
+            var form = document.getElementById("LoginForm");
+            form.submit();
+            //window.location.href = "Home";
         }
     }
     function RegisterForm() {
@@ -289,6 +293,13 @@
                 event.preventDefault();
                 alert("Fill in blank..!");
             }
+            else {
+                var form = document.getElementById("LoginForm");
+                form.submit();
+                //window.location.href = "Home";
+            }
         }
+
+
     }
 </script>
