@@ -14,6 +14,7 @@ namespace WebApplication1.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            var a = 2;
             var customers = database.Customers.ToList();
             return View(customers);
         }
