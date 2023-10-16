@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using Water_Environment.Models;
@@ -16,7 +13,14 @@ namespace Water_Environment.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+            {
+                return View();
+            }
         }
         //public ActionResult Login()
         //{
@@ -36,7 +40,7 @@ namespace Water_Environment.Controllers
                 if (IsValidUser)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Admin");
                 }
             }
             ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng !");

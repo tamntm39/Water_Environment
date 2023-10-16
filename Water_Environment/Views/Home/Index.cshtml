@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Water_Environment.Models.Home.CategoryContent>
+
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/_MasterLayout.cshtml";
@@ -48,20 +49,20 @@
                                 <li><a href="#">Thông tin nhóm</a></li>
                             </ul>
                         </li>
-                        <li class="menu-parent">
-                            Hoạt động
-                            <ul class="sub-menu">
-                                <li><a href="#">Đại dương</a></li>
-                                <li><a href="#">Nước ngọt</a></li>
-                            </ul>
-                        </li>
-                        <li class="menu-parent">
-                            Tin tức
-                            <ul class="sub-menu">
-                                <li><a href="#">Cập nhật mới nhẩt</a></li>
-                                <li><a href="#">Câu chuyện của chúng tôi</a></li>
-                            </ul>
-                        </li>
+                        @{
+                            foreach (var item in Model)
+                            {
+                                <li class="menu-parent">
+                                    @item.CateName
+                                    <ul class="sub-menu">
+                                        @foreach (var itemContent in @item.CateContent)
+                                        {
+                                            <li><a href="@itemContent.url">@itemContent.Title</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
                         <li><a href="">Tham gia</a></li>
                         <li><a href="">Liên hệ</a></li>
                     </ul>
@@ -256,21 +257,21 @@
 </button>
 
 <script>
-        let mybutton = document.getElementById("myBtn");
+    let mybutton = document.getElementById("myBtn");
 
-        window.onscroll = function () { scrollFunction() };
+    window.onscroll = function () { scrollFunction() };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
         }
+    }
 
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 </script>
 @* ------------------------------------------------------------------------------------------------- *@

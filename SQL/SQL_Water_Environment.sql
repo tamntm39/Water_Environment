@@ -3,7 +3,7 @@ GO
 USE Water_Environment
 GO
 CREATE TABLE "Users"(
-    "id" INT NOT NULL,
+    "id" INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     "UserName" VARCHAR(255) NOT NULL,
     "PassWord" VARCHAR(255) NOT NULL,
     "Email" VARCHAR(255) NOT NULL,
@@ -11,12 +11,10 @@ CREATE TABLE "Users"(
     "CreatedOn" DATETIME NOT NULL,
     "IsActive" BIT NOT NULL
 );
-ALTER TABLE
-    "Users" ADD CONSTRAINT "users_id_primary" PRIMARY KEY("id");
 CREATE UNIQUE INDEX "users_username_unique" ON
     "Users"("UserName");
 CREATE TABLE "ActivitiesAndNews"(
-    "id" INT NOT NULL,
+    "id" INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     "Title" NVARCHAR(255) NOT NULL,
     "IsActive" BIT NOT NULL,
     "CreateBy" INT NOT NULL,
@@ -24,39 +22,31 @@ CREATE TABLE "ActivitiesAndNews"(
     "Content" NVARCHAR(255) NOT NULL,
     "CategoryId" INT NOT NULL
 );
-ALTER TABLE
-    "ActivitiesAndNews" ADD CONSTRAINT "activitiesandnews_id_primary" PRIMARY KEY("id");
 CREATE UNIQUE INDEX "activitiesandnews_title_unique" ON
     "ActivitiesAndNews"("Title");
 CREATE TABLE "Category"(
-    "id" INT NOT NULL,
+    "id" INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     "Name" NVARCHAR(255) NOT NULL,
     "IsActive" BIT NOT NULL,
     "CreatedOn" DATETIME NOT NULL,
     "CreateBy" INT NOT NULL
 );
-ALTER TABLE
-    "Category" ADD CONSTRAINT "category_id_primary" PRIMARY KEY("id");
 CREATE UNIQUE INDEX "category_name_unique" ON
     "Category"("Name");
 CREATE TABLE "Permission"(
-    "id" INT NOT NULL,
+    "id" INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     "Name" NVARCHAR(255) NOT NULL,
     "Code" VARCHAR(255) NOT NULL
 );
-ALTER TABLE
-    "Permission" ADD CONSTRAINT "permission_id_primary" PRIMARY KEY("id");
 CREATE UNIQUE INDEX "permission_code_unique" ON
     "Permission"("Code");
 CREATE TABLE "Comment"(
-    "id" INT NOT NULL,
+    "id" INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     "UserComment" INT NOT NULL,
     "CreateOn" DATETIME NOT NULL,
     "Content" NVARCHAR(255) NOT NULL,
     "PostId" INT NOT NULL
 );
-ALTER TABLE
-    "Comment" ADD CONSTRAINT "comment_id_primary" PRIMARY KEY("id");
 ALTER TABLE
     "Users" ADD CONSTRAINT "users_userpermission_foreign" FOREIGN KEY("UserPermission") REFERENCES "Permission"("id");
 ALTER TABLE

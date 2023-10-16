@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Water_Environment.Models.Permission>
+
+@{
+    ViewBag.Title = "ManagePermission";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách quyền</h2>
+
+<div class="text-right">
+    <button type="button" class="btn btn-primary" onclick="CreateNewUser()"><i class="fas fa-plus"></i> Tạo người dùng</button>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tài khoản</th>
+                    <th scope="col">Quyền hạn</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Code</td>
+                        <th>
+                            <div class="btn-group" role="group">
+                                @*<i class="fas fa-edit"></i>*@
+                                <button type="button" class="btn btn-primary" onclick="EditUser(@item.id)">Sửa</button>
+                                <button type="button" class="btn btn-danger" onclick="DeleteUser(@item.id)">Xóa</button>
+                                @*<i class="fas fa-trash-alt"></i>*@
+                            </div>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<div id="create-user-model" class="modal fade create-user-md" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thông tin người dùng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label class="col-form-label">Họ tên</label>
+                        <input type="text" class="form-control" name="md-name">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Tài khoản</label>
+                        <input type="text" class="form-control" name="md-username">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" name="md-password">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Xác nhận mật khẩu</label>
+                        <input type="password" class="form-control" name="md-repassword">
+                    </div>
+                    <div class="form-group">
+                        <labe>Vai trò</labe>
+                        <select name="md-role" class="form-control">
+                            @*@using (THUONGMAIDIENTUEntities db = new THUONGMAIDIENTUEntities())
+                                {
+                                    foreach (var item in db.ROLEs.ToList())
+                                    {
+                                        <option value="@item.IdRole">@item.RoleName</option>
+                                    }
+                                }*@
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="SaveInfo()">Lưu lại</button>
+            </div>
+        </div>
+    </div>
+</div>
