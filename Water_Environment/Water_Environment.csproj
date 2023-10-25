@@ -139,12 +139,14 @@
     <Compile Include="Models\ActivitiesAndNew.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivitiesNews\ActivitiesNewsCate.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Comment.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Custom\ApiResult.cs" />
     <Compile Include="Models\Entities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -277,6 +279,9 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\ManageUsers.cshtml" />
     <Content Include="Views\Admin\ManagePermission.cshtml" />
+    <Content Include="Views\Admin\ManageCategories.cshtml" />
+    <Content Include="Views\Admin\ManageActivitiesNews.cshtml" />
+    <Content Include="Views\Admin\EditActivitiesNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

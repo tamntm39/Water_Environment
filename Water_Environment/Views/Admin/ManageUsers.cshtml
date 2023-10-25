@@ -36,10 +36,8 @@
                         <td>@item.User.CreatedOn</td>
                         <th>
                             <div class="btn-group" role="group">
-                                @*<i class="fas fa-edit"></i>*@
-                                <button type="button" class="btn btn-primary" onclick="EditUser(@item.User.id)">Sửa</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Sửa người dùng" data-bs-target="#ModalEdit" data-user-id="@item.User.id" data-user-uresname="@item.User.UserName" data-user-email="@item.User.UserName" data-user-permissionename="@item.PermissionName" data-user-isactive="@item.User.IsActive" data-user-createon="@item.User.CreatedOn">Sửa</button>
                                 <button type="button" class="btn btn-danger" onclick="DeleteUser(@item.User.id)">Xóa</button>
-                                @*<i class="fas fa-trash-alt"></i>*@
                             </div>
                         </th>
                     </tr>
@@ -49,52 +47,137 @@
     </div>
 </div>
 
-
-<div id="create-user-model" class="modal fade create-user-md" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="ModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Thông tin người dùng</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 class="modal-title" id="exampleModalLabel">Sửa người dùng </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label class="col-form-label">Họ tên</label>
-                        <input type="text" class="form-control" name="md-name">
+                    <div class="mb-3 d-none">
+                        <label for="user-id" class="col-form-label">ID:</label>
+                        <input type="text" class="form-control" id="user-id">
                     </div>
-                    <div class="form-group">
-                        <label class="col-form-label">Tài khoản</label>
-                        <input type="text" class="form-control" name="md-username">
+                    <div class="mb-3">
+                        <label for="user-uresname" class="col-form-label">Tài khoản:</label>
+                        <input type="text" class="form-control" id="user-uresname">
                     </div>
-                    <div class="form-group">
-                        <label class="col-form-label">Mật khẩu</label>
-                        <input type="password" class="form-control" name="md-password">
+                    <div class="mb-3">
+                        <label for="user-email" class="col-form-label">Email:</label>
+                        <input type="text" class="form-control" id="user-email">
                     </div>
-                    <div class="form-group">
-                        <label class="col-form-label">Xác nhận mật khẩu</label>
-                        <input type="password" class="form-control" name="md-repassword">
+                    <div class="mb-3">
+                        <label for="user-permissionename" class="col-form-label">Quyền:</label>
+                        <input class="form-control" id="user-permissionename"></input>
                     </div>
-                    <div class="form-group">
-                        <labe>Vai trò</labe>
-                        <select name="md-role" class="form-control">
-                            @*@using (THUONGMAIDIENTUEntities db = new THUONGMAIDIENTUEntities())
-                                {
-                                    foreach (var item in db.ROLEs.ToList())
-                                    {
-                                        <option value="@item.IdRole">@item.RoleName</option>
-                                    }
-                                }*@
-                        </select>
+                    <div class="mb-3">
+                        <label for="user-isactive" class="col-form-label">Hoạt động:</label>
+                        <input class="form-control" id="user-isactive"></input>
                     </div>
+                    <div class="mb-3">
+                        <label for="user-createon" class="col-form-label">Ngày cập nhật:</label>
+                        <input class="form-control" id="user-createon"></input>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
                 <button type="button" class="btn btn-primary" onclick="SaveInfo()">Lưu lại</button>
             </div>
         </div>
     </div>
 </div>
+
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Xóa người dùng </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc rằng bạn muốn xóa tài khoản này không?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var modalEdit = document.getElementById('ModalEdit')
+    modalEdit.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget
+        // Extract info from data-bs-* attributes
+        var id = button.getAttribute('data-user-id')
+        var uresname = button.getAttribute('data-user-uresname')
+        var email = button.getAttribute('data-user-email')
+        var permissionename = button.getAttribute('data-user-permissionename')
+        var isactive = button.getAttribute('data-user-isactive')
+        var createon = button.getAttribute('ddata-user-createon')
+
+        var titleModal = button.getAttribute('title')
+        var modalTitle = modalEdit.querySelector('.modal-title')
+        var modalIdValue = modalEdit.querySelector('#user-id')
+        var modalUserNameValue = modalEdit.querySelector('#user-uresname')
+        var modalEmailValue = modalEdit.querySelector('#user-email')
+        var modalPermissionNameValue = modalEdit.querySelector('#user-permissionename')
+        var modalIsActiveValue = modalEdit.querySelector('#user-isactive')
+        var modalCreatedOnValue = modalEdit.querySelector('#user-createon')
+        modalTitle.textContent = titleModal
+        modalIdValue.value = id;
+        modalUserNameValue.value = uresname;
+        modalEmailValue.value = email;
+        modalPermissionNameValue.value = permissionename;
+        modalIsActiveValue.value = isactive;
+        modalCreatedOnValue.value = createon;
+    })
+
+    function SaveInfo() {
+        var id = $("#user-id").val();
+        var uresname = $("#user-uresname").val();
+        var email = $("#user-email").val();
+        var permissionename = $("#user-permissionename").val();
+        var isactive = $("#user-isactive").val();
+        var createon = $("#user-createon").val();
+        if (uresname == '' || email == '' || permissionename == '' || isactive == '' || createon == '') {
+            alert('Vui lòng nhập đủ thông tin');
+            return;
+        }
+
+        $.ajax({
+            url: '/Admin/EditUser',
+            type: 'POST',
+            dataType: 'text',
+            data: {
+                id: id,
+                UserName: uresname,
+                Email: email,
+                PermissionName: permissionename,
+                UserName: isactive,
+                CreatedOn: createon
+            }
+        }).done(function (result) {
+            console.log(result, "result");
+            var rsJson = JSON.parse(result);
+            if (rsJson.Success == true) {
+                alert(rsJson.Message);
+                window.location.reload();
+                return;
+            }
+            else {
+                alert(rsJson.Message);
+                return;
+            }
+        });
+
+    }
+</script>
