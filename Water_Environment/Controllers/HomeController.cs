@@ -16,7 +16,7 @@ namespace Water_Environment.Controllers
         public ActionResult Index()
         {
             List<CategoryContent> lstCateContent = new List<CategoryContent>();
-            List<Category> lstCate = _db.Categories.Where(x=>x.IsActive).ToList();
+            List<Category> lstCate = _db.Categories.Where(x => x.IsActive).ToList();
             foreach (Category c in lstCate)
             {
                 List<ContentOfCate> lstCOC = _db.ActivitiesAndNews
