@@ -1,0 +1,47 @@
+﻿body {
+    
+}
+
+.container {
+    /*height: 2000px;*/
+}
+.source{
+    font-weight: bold;
+}
+
+.bg_img {
+    width: 100%;
+    position: relative;
+    top: -100px;
+    z-index: -1;
+    background-size: contain;
+}
+
+.text-block {
+    position: absolute;
+    bottom: 50px;
+    right: 30px;
+    background-color: lightgrey;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .text-block h1 {
+        font-size: 40px;
+        font-family: wwf;
+    }
+
+
+.popular-container .headTitle {
+    padding-left: 20px;
+}
+    .headTitle .content {
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        font-weight: bold;
+    }
+    .headTitle .content:hover{
+        color: darkorange;
+    }

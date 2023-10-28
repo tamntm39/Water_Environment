@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "BaiBao";
+    Layout = "~/Views/_MasterLayout.cshtml";
+}
+
+@* Header *@
+<div class="header">
+    <div class="head-left">
+        <div class="head-left-email">
+            <a href="mailto:info@educationpro.com">
+                <i class='bx bx-envelope bx-tada'></i> nhom12@gmail.com
+            </a>
+        </div>
+        <div class="head-left-phone">
+            <a href="tel:+9779813639131">
+                <i class='bx bxs-phone bx-tada'></i> 0818202648
+            </a>
+        </div>
+    </div>
+
+    <div class="box">
+        <input type="text" placeholder="Search...">
+        <a><i class='bx bx-search-alt-2 bx-tada'></i></a>
+    </div>
+
+    <div class="head-right">
+        <div class="login-block">
+            <a href="Index"><i class='bx bx-user-circle'></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="main-header" id="myHeader">
+    <div class="container">
+        <div class="logo-wrap">
+            <img src="~/Images/logo_home.png" alt="Logo Image" />
+        </div>
+        <div class="nav-wrap">
+            <nav class="nav-desktop">
+                <ul class="menu-list">
+                    <li><a href="#">Trang chủ</a></li>
+                    <li class="menu-parent">
+                        Giới thiệu
+                        <ul class="sub-menu">
+                            <li><a href="#">Tổng quát</a></li>
+                            <li><a href="#">Thông tin nhóm</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-parent">
+                        Hoạt động
+                        <ul class="sub-menu">
+                            <li><a href="#">Đại dương</a></li>
+                            <li><a href="#">Nước ngọt</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-parent">
+                        Tin tức
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Cập nhật mới nhất", "Update", "News");
+                            </li>
+                            <li>
+                                @Html.ActionLink("Câu chuyện của chúng tôi", "Story", "News");
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="">Tham gia</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div id="bar">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h1 class="title">Thực trạng ô nhiễm môi trường nước ta hiện nay</h1>
+
+    <div class="contain">
+        <div class="detail">
+            <h2 style="text-align: justify;">
+                Một vấn đề nóng bỏng, gây bức xúc trong dư luận xã hội cả nước hiện nay là
+                tình trạng ô nhiễm môi trường sinh thái do các hoạt động sản xuất và sinh
+                hoạt của con người gây ra. Vấn đề này ngày càng trầm trọng, đe doạ trực tiếp
+                sự phát triển kinh tế - xã hội bền vững, sự tồn tại, phát triển của các thế
+                hệ hiện tại và tương lai. Đối tượng gây ô nhiễm môi trường chủ yếu là hoạt
+                động sản xuất của nhà máy trong các khu công nghiệp, hoạt động làng nghề và
+                sinh hoạt tại các đô thị lớn
+            </h2>
+
+            <br />
+
+            <h5>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Ô nhiễm môi trường bao gồm 3 loại chính là: ô nhiễm đất, ô nhiễm nước và ô
+                nhiễm không khí. Trong ba loại ô nhiễm đó thì ô nhiễm không khí tại các đô
+                thị lớn, khu công nghiệp và làng nghề là nghiêm trọng nhất, mức độ ô nhiễm
+                vượt nhiều lần tiêu chuẩn cho phép.
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Theo báo cáo giám sát của Uỷ ban Khoa học, Công nghệ và Môi trường của Quốc
+                hội, tỉ lệ các khu công nghiệp có hệ thống xử lí nước thải tập trung ở một
+                số địa phương rất thấp, có nơi chỉ đạt 15 - 20%, như tỉnh Bà Rịa - Vũng Tàu,
+                Vĩnh Phúc. Một số khu công nghiệp có xây dựng hệ thống xử lí nước thải tập
+                trung nhưng hầu như không vận hành vì để giảm chi phí. Đến nay, mới có 60
+                khu công nghiệp đã hoạt động có trạm xử lí nước thải tập trung (chiếm 42%
+                số khu công nghiệp đã vận hành) và 20 khu công nghiệp đang xây dựng trạm xử
+                lí nước thải. Bình quân mỗi ngày, các khu, cụm, điểm công nghiệp thải ra
+                khoảng 30.000 tấn chất thải rắn, lỏng, khí và chất thải độc hại khác. Dọc
+                lưu vực sông Đồng Nai, có 56 khu công nghiệp, khu chế xuất đang hoạt động
+                nhưng chỉ có 21 khu có hệ thống xử lý nước thải tập trung, số còn lại đều xả
+                trực tiếp vào nguồn nước, gây tác động xấu đến chất lượng nước của các nguồn
+                tiếp nhận... Có nơi, hoạt động của các nhà máy trong khu công nghiệp đã phá
+                vỡ hệ thống thuỷ lợi, tạo ra những cánh đồng hạn hán, ngập úng và ô nhiễm
+                nguồn nước tưới, gây trở ngại rất lớn cho sản xuất nông nghiệp của bà con
+                nông dân.
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Nhìn chung, hầu hết các khu, cụm, điểm công nghiệp trên cả nước chưa đáp ứng
+                được những tiêu chuẩn về môi trường theo quy định. Thực trạng đó làm cho môi
+                trường sinh thái ở một số địa phương bị ô nhiễm nghiêm trọng. Cộng đồng dân
+                cư, nhất là các cộng đồng dân cư lân cận với các khu công nghiệp, đang phải
+                đối mặt với thảm hoạ về môi trường. Họ phải sống chung với khói bụi, uống
+                nước từ nguồn ô nhiễm chất thải công nghiệp... Từ đó, gây bất bình, dẫn đến
+                những phản ứng, đấu tranh quyết liệt của người dân đối với những hoạt động
+                gây ô nhiễm môi trường, có khi bùng phát thành các xung đột xã hội gay gắt.
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Cùng với sự ra đời ồ ạt các khu, cụm, điểm công nghiệp, các làng nghề thủ
+                công truyền thống cũng có sự phục hồi và phát triển mạnh mẽ. Việc phát triển
+                các làng nghề có vai trò quan trọng đối với sự phát triển kinh tế - xã hội
+                và giải quyết việc làm ở các địa phương. Tuy nhiên, hậu quả về môi trường
+                do các hoạt động sản xuất làng nghề đưa lại cũng ngày càng nghiêm trọng.
+                Tình trạng ô nhiễm không khí, chủ yếu là do nhiên liệu sử dụng trong các
+                làng nghề là than, lượng bụi và khí CO, CO2, SO2 và Nox thải ra trong quá
+                trình sản xuất khá cao. Theo thống kê của Hiệp hội Làng nghề Việt Nam, hiện
+                nay cả nước có 2.790 làng nghề, trong đó có 240 làng nghề truyền thống, đang
+                giải quyết việc làm cho khoảng 11 triệu lao động, bao gồm cả lao động thường
+                xuyên và lao động không thường xuyên. Các làng nghề được phân bố rộng khắp
+                cả nước, trong đó các khu vực tập trung phát triển nhất là đồng bằng sông
+                Hồng, Bắc Trung Bộ, Tây Bắc Bộ, đồng bằng sông Cửu Long. Hoạt động gây ô
+                hiễm môi trường sinh thái tại các làng nghề không chỉ ảnh hưởng trực tiếp
+                đến cuộc sống, sinh hoạt và sức khoẻ của những người dân làng nghề mà còn
+                ảnh hưởng đến cả những người dân sống ở vùng lân cận, gây phản ứng quyết
+                liệt của bộ phận dân cư này, làm nảy sinh các xung đột xã hội gay gắt.
+                <br />
+                <br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Bên cạnh các khu công nghiệp và các làng nghề gây ô nhiễm môi trường, tại
+                các đô thị lớn, tình trạng ô nhiễm cũng ở mức báo động. Đó là các ô nhiễm
+                về nước thải, rác thải sinh hoạt, rác thải y tế, không khí, tiếng ồn...
+                Những năm gần đây, dân số ở các đô thị tăng nhanh khiến hệ thống cấp thoát
+                nước không đáp ứng nổi và xuống cấp nhanh chóng. Nước thải, rác thải sinh
+                hoạt (vô cơ và hữu cơ) ở đô thị hầu hết đều trực tiếp xả ra môi trường mà
+                không có bất kỳ một biện pháp xử lí môi trường nào nào ngoài việc vận chuyển
+                đến bãi chôn lấp. Theo thống kê của cơ quan chức năng, mỗi ngày người dân
+                ở các thành phố lớn thải ra hàng nghìn tấn rác; các cơ sở sản xuất thải ra
+                hàng trăm nghìn mét khối nước thải độc hại; các phương tiện giao thông thải
+                ra hàng trăm tấn bụi, khí độc. Trong tổng số khoảng 34 tấn rác thải rắn y
+                tế mỗi ngày, thành phố Hà Nội và thành phố Hồ Chí Minh chiếm đến 1/3; bầu
+                khí quyển của thành phố Hà Nội và thành phố Hồ Chí Minh có mức benzen và
+                sunfua đioxit đáng báo động. Theo một kết quả nghiên cứu mới công bố năm
+                2008 của Ngân hàng Thế giới (WB), trên 10 tỉnh thành phố Việt Nam, xếp theo
+                thứ hạng về ô nhiễm đất, nước, không khí, thành phố Hồ Chí Minh và Hà Nội
+                là những địa bàn ô nhiễm đất nặng nhất. Theo báo cáo của Chương trình môi
+                trường của Liên hợp quốc, thành phố Hà Nội và thành phố Hồ Chí Minh đứng
+                đầu châu Á về mức độ ô nhiễm bụi.
+                <br />
+                <br />
+            </h5>
+        </div>
+        <div class="img">
+            <img src="~/Images/742977548964.jpg" alt="Alternate Text" />
+        </div>
+    </div>
+
+</div>
+<!------------------------------------------- Back to Top ----------------------------------------->
+<button onclick="topFunction()" id="myBtn" title="Go to top">
+    <i class='bx bxs-arrow-to-top'></i>
+</button>
+
+<script>
+    let mybutton = document.getElementById("myBtn");
+
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+@* ------------------------------------------------------------------------------------------------- *@

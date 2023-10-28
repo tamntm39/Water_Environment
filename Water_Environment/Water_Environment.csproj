@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +183,7 @@
     <Content Include="AdminAssets\js\demo\datatables-demo.js" />
     <Content Include="AdminAssets\js\sb-admin-2.js" />
     <Content Include="AdminAssets\js\sb-admin-2.min.js" />
+    <Content Include="Content\BaiBao.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -201,10 +203,14 @@
     <Content Include="Content\head.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Post.css" />
+    <Content Include="Content\Update.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\1111.jpg" />
+    <Content Include="Images\663043006587.jpg" />
+    <Content Include="Images\742977548964.jpg" />
     <Content Include="Images\beach_img_1.jpg" />
     <Content Include="Images\beach_img_2.jpg" />
     <Content Include="Images\close.png" />
@@ -212,6 +218,7 @@
     <Content Include="Images\course2-img.jpg" />
     <Content Include="Images\course3-img.jpg" />
     <Content Include="Images\eberhard-grossgasteiger-cs0sK0gzqCU-unsplash.jpg" />
+    <Content Include="Images\Environment-Lake-River_Sunrise_Sunset_1043560968-scaled.jpg" />
     <Content Include="Images\explored-hires.jpg" />
     <Content Include="Images\img.jpg" />
     <Content Include="Images\left.png" />
@@ -282,6 +289,9 @@
     <Content Include="Views\Admin\ManageCategories.cshtml" />
     <Content Include="Views\Admin\ManageActivitiesNews.cshtml" />
     <Content Include="Views\Admin\EditActivitiesNews.cshtml" />
+    <Content Include="Views\News\Update.cshtml" />
+    <Content Include="Views\News\BaiBao.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

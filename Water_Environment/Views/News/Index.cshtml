@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_MasterLayout.cshtml";
+}
+
+<link href="~/Content/Post.css" rel="stylesheet" />
+
+@* Header *@
+<div class="header">
+    <div class="head-left">
+        <div class="head-left-email">
+            <a href="mailto:info@educationpro.com">
+                <i class='bx bx-envelope bx-tada'></i> nhom12@gmail.com
+            </a>
+        </div>
+        <div class="head-left-phone">
+            <a href="tel:+9779813639131">
+                <i class='bx bxs-phone bx-tada'></i> 0818202648
+            </a>
+        </div>
+    </div>
+
+    <div class="box">
+        <input type="text" placeholder="Search...">
+        <a><i class='bx bx-search-alt-2 bx-tada'></i></a>
+    </div>
+
+    <div class="head-right">
+        <div class="login-block">
+            <a href="Index"><i class='bx bx-user-circle'></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="main-header" id="myHeader">
+    <div class="container">
+        <div class="logo-wrap">
+            <img src="~/Images/logo_home.png" alt="Logo Image" />
+        </div>
+        <div class="nav-wrap">
+            <nav class="nav-desktop">
+                <ul class="menu-list">
+                    <li><a href="#">Trang chủ</a></li>
+                    <li class="menu-parent">
+                        Giới thiệu
+                        <ul class="sub-menu">
+                            <li><a href="#">Tổng quát</a></li>
+                            <li><a href="#">Thông tin nhóm</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-parent">
+                        Hoạt động
+                        <ul class="sub-menu">
+                            <li><a href="#">Đại dương</a></li>
+                            <li><a href="#">Nước ngọt</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-parent">
+                        Tin tức
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Cập nhật mới nhất", "Update", "News");
+                            </li>
+                            <li>
+                                @Html.ActionLink("Câu chuyện của chúng tôi", "Story", "News");
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="">Tham gia</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div id="bar">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="outside">
+    <div class="khung">
+        <div class="news_title">
+            <label class="style">Title: </label>
+            <input type="text" name="title" value="" />
+        </div>
+        <div class="news_creator">
+            <label class="style">Creater by: </label>
+            <input type="text" name="creator" value="" />
+        </div>
+
+        <p style="padding-top: 60px;" class=" style">Content:</p>
+        <div class="news_content">
+            <textarea placeholder="Write here..."></textarea>
+        </div>
+        <div class="post">
+            <button class="btn btn-primary" type="submit" onclick="TinTuc()">Đăng</button>
+        </div>
+    </div>
+</div>
+<script>
+    function TinTuc() {
+
+    }
+</script>

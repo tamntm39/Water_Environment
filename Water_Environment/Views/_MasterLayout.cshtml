@@ -8,12 +8,15 @@
 
     <link rel="stylesheet" href="~/Content/head.css" />
     <link rel="stylesheet" href="~/Content/login.css" />
+    <link rel="stylesheet" href="~/Content/Update.css" />
+    <link rel="stylesheet" href="~/Content/BaiBao.css" />
+
 
     @* -====================================== REMIXICON =========================================- *@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css" rel="stylesheet" />
 
 
-    <link rel="stylesheet" href="~/Content/bootstrap-grid.min.css"/>
+    <link rel="stylesheet" href="~/Content/bootstrap-grid.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -36,79 +39,11 @@
             referrerpolicy="no-referrer">
     </script>
 
+
 </head>
 <body>
 
-    @* Header *@
-    <div class="header">
-        <div class="head-left">
-            <div class="head-left-email">
-                <a href="mailto:info@educationpro.com">
-                    <i class='bx bx-envelope bx-tada'></i> nhom12@gmail.com
-                </a>
-            </div>
-            <div class="head-left-phone">
-                <a href="tel:+9779813639131">
-                    <i class='bx bxs-phone bx-tada'></i> 0818202648
-                </a>
-            </div>
-        </div>
 
-        <div class="box">
-            <input type="text" placeholder="Search...">
-            <a><i class='bx bx-search-alt-2 bx-tada'></i></a>
-        </div>
-
-        <div class="head-right">
-            <div class="login-block">
-                <a href="~/Login"><i class='bx bx-user-circle'></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="main-header" id="myHeader">
-        <div class="container">
-            <div class="logo-wrap">
-                <img src="~/Images/logo_home.png" alt="Logo Image" />
-            </div>
-            <div class="nav-wrap">
-                <nav class="nav-desktop">
-                    <ul class="menu-list">
-                        <li><a href="~/Home/Home">Trang chủ</a></li>
-                        <li class="menu-parent">
-                            Giới thiệu
-                            <ul class="sub-menu">
-                                <li><a href="#">Tổng quát</a></li>
-                                <li><a href="#">Thông tin nhóm</a></li>
-                            </ul>
-                        </li>
-                        @{
-                            foreach (var item in Model)
-                            {
-                                <li class="menu-parent">
-                                    @item.CateName
-                                    <ul class="sub-menu">
-                                        @foreach (var itemContent in @item.CateContent)
-                                        {
-                                            <li><a href="@itemContent.url">@itemContent.Title</a></li>
-                                        }
-                                    </ul>
-                                </li>
-                            }
-                        }
-                        <li><a href="">Tham gia</a></li>
-                        <li><a href="">Liên hệ</a></li>
-                    </ul>
-                </nav>
-                <div id="bar">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div id="close">
-                    <i class="fas fa-times"></i>
-                </div>
-            </div>
-        </div>
-    </div>
 
     @* Body *@
     <div>
