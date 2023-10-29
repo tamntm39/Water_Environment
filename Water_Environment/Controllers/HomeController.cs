@@ -15,13 +15,19 @@ namespace Water_Environment.Controllers
         Water_EnvironmentEntities _db = new Water_EnvironmentEntities();
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public PartialViewResult Navbar()
+        {
+
             List<CategoryContent> lstCateContent = new List<CategoryContent>();
-            List<Category> lstCate = _db.Categories.Where(x=>x.IsActive).ToList();
+            List<Category> lstCate = _db.Categories.Where(x => x.IsActive).ToList();
             foreach (Category c in lstCate)
             {
                 List<ContentOfCate> lstCOC = _db.ActivitiesAndNews
                     .Where(x => x.CategoryId == c.id && c.IsActive)
-                    .Select(x => new ContentOfCate() { Title = x.Title, url = x.id.ToString() })
+                    .Select(x => new ContentOfCate() { Title = x.Title, url = ("/ActivitiesNews/Content/" + x.id) })
                     .ToList();
                 CategoryContent categoryContentNew = new CategoryContent()
                 {
@@ -30,7 +36,7 @@ namespace Water_Environment.Controllers
                 };
                 lstCateContent.Add(categoryContentNew);
             }
-            return View(lstCateContent);
+            return PartialView(lstCateContent);
         }
     }
 }

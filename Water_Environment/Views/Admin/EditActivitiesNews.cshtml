@@ -3,7 +3,7 @@
     ViewBag.Title = "EditActivitiesNews";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+@*<link href="~/Content/editer.css" rel="stylesheet" />*@
 
 <h2>Chỉnh sửa bài viết</h2>
 
@@ -11,60 +11,49 @@
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Thêm Loại" data-bs-target="#ModalEdit">Thêm loại</button>
 </div>
 <div class="card-body">
-
-
-    <div class="form-horizontal">
-        <div class="form-group">
-            <lable class="control-label">Tiêu đề bài viết</lable>
-            <div>
-                @Model.Title
-            </div>
+    <form>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Tiêu đề bài viết</label>
+            <input type="text" class="form-control" name="Title" value="@Model.Title">
         </div>
-
-
-        <div class="form-group">
-            <lable class="control-label">Danh mục</lable>
-            @*<div>
-                    <select name="IdCategory" class="form-control">
-                        @using (THUONGMAIDIENTUEntities db = new THUONGMAIDIENTUEntities())
-                        {
-                            foreach (var item in db.CATEGORY_NEWS.ToList())
-                            {
-                                <option value="@item.IdCategory">@item.CategoryName</option>
-                            }
-                        }
-                    </select>
-                </div>*@
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Nội dung bài viết</label>
+            @*<div id="summernote" name="Content"></div>*@
+        <textarea id="editor">@Model.Content</textarea>
 
         </div>
 
-        <div class="form-group">
-            <lable class="control-label">Hình ảnh</lable>
-            @*<div class="custom-file">
-                <input type="file" class="custom-file-input" name="file" accept="image/*" onchange="readURL(this, 'blah1');" aria-describedby="inputGroupFileAddon01">
-                <label class="custom-file-label">Hình đại diện bài viết</label>
-            </div>
-            <div class="imges">
-                <img id="blah1" width="250">
+        @*<div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
             </div>*@
-        </div>
-
-        <div class="form-group">
-            <lable class="control-label">Mô tả ngắn</lable>
-            <div>
-                @*@Html.TextAreaFor(model => model.NewsSumary, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.NewsSumary, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
-
-        <div class="form-group">
-            <lable class="control-label">Bài viết</lable>
-            <div>
-                @*@Html.TextAreaFor(model => model.NewsDetail, new { @class = "form-control", @id = "NewsDetail" })
-                    @Html.ValidationMessageFor(model => model.NewsDetail, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
+        <button type="button" onclick="SaveInfo()" class="btn btn-primary">Submit</button>
+    </form>
+</div>
 
 
+<script> 
+    function SaveInfo() {
+        var editorContent = tinymce.get('editor').getContent();
 
-    </div>
+         //Display the content in a div
+        //document.getElementById('displayContent').innerHTML = editorContent;
+
+        console.log(editorContent, "editor");
+    } 
+
+   
+</script>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+    tinymce.init({
+        selector: 'textarea#editor',
+        skin: 'bootstrap',
+        plugins: 'lists, link, image, media',
+        toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help',
+        menubar: false, 
+    });
+    
+</script>

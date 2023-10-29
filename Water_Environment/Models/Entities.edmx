@@ -14,7 +14,7 @@
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="CreateBy" Type="int" Nullable="false" />
           <Property Name="CreateOn" Type="datetime" Nullable="false" />
-          <Property Name="Content" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
           <Property Name="CategoryId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
@@ -175,7 +175,7 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="CreateBy" Type="Int32" Nullable="false" />
           <Property Name="CreateOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.activitiesandnews_categoryid_foreign" FromRole="ActivitiesAndNews" ToRole="Category" />
           <NavigationProperty Name="User" Relationship="Self.activitiesandnews_createby_foreign" FromRole="ActivitiesAndNews" ToRole="Users" />

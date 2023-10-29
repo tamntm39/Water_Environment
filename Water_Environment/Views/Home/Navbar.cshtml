@@ -1,0 +1,43 @@
+﻿<div class="main-header" id="myHeader">
+    <div class="container">
+        <div class="logo-wrap">
+            <img src="~/Images/logo_home.png" alt="Logo Image" />
+        </div>
+        <div class="nav-wrap">
+            <nav class="nav-desktop">
+                <ul class="menu-list">
+                    <li><a href="~/Home">Trang chủ</a></li>
+                    <li class="menu-parent">
+                        Giới thiệu
+                        <ul class="sub-menu">
+                            <li><a href="#">Tổng quát</a></li>
+                            <li><a href="#">Thông tin nhóm</a></li>
+                        </ul>
+                    </li>
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <li class="menu-parent">
+                                @item.CateName
+                                <ul class="sub-menu">
+                                    @foreach (var itemContent in @item.CateContent)
+                                    {
+                                        <li><a href="@itemContent.url">@itemContent.Title</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    }
+                    <li><a href="">Tham gia</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div id="bar">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+</div>

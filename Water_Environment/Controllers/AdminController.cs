@@ -178,6 +178,21 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("ManageActivitiesNews");
             }
         }
-        
+        [HttpPost]
+        public ActionResult EditActivitiesNews(ActivitiesAndNew actiNews)
+        {
+            var a = 2;
+            return View();
+
+            //ActivitiesAndNew activitiesAndNew = _db.ActivitiesAndNews.Find(id);
+            //if (activitiesAndNew != null)
+            //{
+            //    return View(activitiesAndNew);
+            //}
+            //else
+            //{
+            //    return RedirectToAction("ManageActivitiesNews");
+            //}
+        }
     }
 }
