@@ -11,7 +11,8 @@ namespace Water_Environment.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class ActivitiesAndNew
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +26,7 @@ namespace Water_Environment.Models
         public bool IsActive { get; set; }
         public int CreateBy { get; set; }
         public System.DateTime CreateOn { get; set; }
+        [AllowHtml]
         public string Content { get; set; }
         public int CategoryId { get; set; }
     

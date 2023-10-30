@@ -112,8 +112,7 @@
         var id = $("#permission-id").val();
         var name = $("#permission-name").val();
         var code = $("#permission-code").val();
-        var isActive = $("#permission-active").val();
-       
+        var isActive = $("#permission-active")[0].checked; 
         if (name == '' || code == '') {
             alert('Vui lòng nhập đủ thông tin');
             return;
@@ -150,7 +149,7 @@
                     id: id,
                     Code: code,
                     Name: name,
-                    IsActive: isActive === "on"
+                    IsActive: isActive
                 }
             }).done(function (result) {
                 var rsJson = JSON.parse(result);

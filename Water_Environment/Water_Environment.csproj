@@ -129,11 +129,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\ActivateController.cs" />
     <Compile Include="Controllers\ActivitiesNewsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IntroduceController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -142,6 +140,7 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ActivitiesNews\ActivitiesNewsCate.cs" />
+    <Compile Include="Models\ActivitiesNews\EditActitiviesNewModel.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -288,8 +287,10 @@
     <Content Include="Views\Admin\ManageActivitiesNews.cshtml" />
     <Content Include="Views\Admin\EditActivitiesNews.cshtml" />
     <Content Include="Views\ActivitiesNews\Content.cshtml" />
-    <Content Include="Views\Introduce\Information.cshtml" />
+    <Content Include="Views\Home\AboutUs.cshtml" />
     <Content Include="Views\Home\Navbar.cshtml" />
+    <Content Include="Views\Home\Synthetic.cshtml" />
+    <Content Include="Views\Admin\CreateActivitiesNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

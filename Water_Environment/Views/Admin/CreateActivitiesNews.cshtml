@@ -1,20 +1,16 @@
 ﻿@model Water_Environment.Models.ActivitiesNews.EditActitiviesNewModel
 @{
-    ViewBag.Title = "EditActivitiesNews";
+    ViewBag.Title = "CreateActivitiesNews";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 @*<link href="~/Content/editer.css" rel="stylesheet" />*@
 
-<h2>Chỉnh sửa bài viết</h2>
-
-<div class="text-right">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Thêm Loại" data-bs-target="#ModalEdit">Thêm loại</button>
-</div>
+<h2>Thêm bài viết</h2>
 <div class="card-body">
     <form>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Tiêu đề bài viết</label>
-            <input type="text" class="form-control" id="new-title" value="@Model.activitiesAndNew.Title">
+            <input type="text" class="form-control" id="new-title">
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Loại bài viết</label>
@@ -22,21 +18,14 @@
             <select class="form-select" aria-label="Default select example" id="new-category">
                 @foreach (var item in Model.categories)
                 {
-                    if (Model.activitiesAndNew.CategoryId == item.id)
-                    {
-                        <option selected value="@item.id">@item.Name</option>
-                    }
-                    else
-                    {
-                        <option value="@item.id">@item.Name</option>
-                    }
+                    <option value="@item.id">@item.Name</option>
                 }
             </select>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Nội dung bài viết</label>
             @*<div id="summernote" name="Content"></div>*@
-            <textarea id="editor">@Model.activitiesAndNew.Content</textarea>
+            <textarea id="editor"></textarea>
 
         </div>
 
@@ -60,7 +49,6 @@
     }
     function SaveInfo() {
         var editorContent = tinymce.get('editor').getContent();
-        var id = @Model.activitiesAndNew.id;
         var categoryId = $("#new-category").val();
         var title = $("#new-title").val();
         if (editorContent == '' || title == '' || categoryId == '') {
@@ -69,15 +57,13 @@
         }
         //var encodedEditorContent = $('<div />').text(editorContent).html();
         $.ajax({
-            url: '/Admin/EditActivities',
+            url: '/Admin/AddActivitiesNews',
             type: 'POST',
             dataType: 'text',
             data: {
-                id: id,
                 Title: title,
-                CategoryId: categoryId, 
-                Content: editorContent,
-                CreateBy: @Model.activitiesAndNew.CreateBy
+                CategoryId: categoryId,
+                Content: editorContent
             }
         }).done(function (result) {
             var rsJson = JSON.parse(result);

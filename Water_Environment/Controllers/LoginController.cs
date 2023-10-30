@@ -33,13 +33,13 @@ namespace Water_Environment.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool IsValidUser = _db.Users
-               .Any(u => u.UserName.ToLower() == user
-               .Username.ToLower() && u
+                User userDb = _db.Users.FirstOrDefault(u => u.UserName.ToLower() == user.Username.ToLower() && u
                .PassWord == user.Password);
-                if (IsValidUser)
+                if (userDb != null)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);
+                    Session["Username"] = user.Username;
+                    Session["UserId"] = userDb.id;
                     return RedirectToAction("Index", "Admin");
                 }
             }

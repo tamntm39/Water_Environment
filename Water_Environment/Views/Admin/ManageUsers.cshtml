@@ -37,7 +37,7 @@
                         <th>
                             <div class="btn-group" role="group">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Sửa người dùng" data-bs-target="#ModalEdit" data-user-id="@item.User.id" data-user-uresname="@item.User.UserName" data-user-email="@item.User.UserName" data-user-permissionename="@item.PermissionName" data-user-isactive="@item.User.IsActive" data-user-createon="@item.User.CreatedOn">Sửa</button>
-                                <button type="button" class="btn btn-danger" onclick="DeleteUser(@item.User.id)">Xóa</button>
+                                @*<button type="button" class="btn btn-danger" onclick="DeleteUser(@item.User.id)">Xóa</button>*@
                             </div>
                         </th>
                     </tr>
@@ -92,7 +92,7 @@
 </div>
 
 
-<div class="modal" tabindex="-1">
+@*<div class="modal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -108,7 +108,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 
 <script>

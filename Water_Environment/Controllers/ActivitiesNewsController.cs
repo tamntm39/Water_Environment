@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Water_Environment.Models;
+using Water_Environment.Models.Custom;
 
 namespace Water_Environment.Controllers
 {
@@ -25,6 +27,6 @@ namespace Water_Environment.Controllers
             {
                 return View(activities);
             }
-        }
+        } 
     }
 }

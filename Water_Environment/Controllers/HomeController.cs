@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 using Water_Environment.Models;
@@ -37,6 +38,15 @@ namespace Water_Environment.Controllers
                 lstCateContent.Add(categoryContentNew);
             }
             return PartialView(lstCateContent);
+        }
+
+        public ActionResult AboutUs()
+        {
+            return View();
+        }
+        public ActionResult Synthetic()
+        {
+            return View();
         }
     }
 }

@@ -71,18 +71,18 @@ namespace WebApplication1.Controllers
             ApiResult rs = new ApiResult();
             try
             {
-                if (_db.Permissions.Any(x => x.Code == p.Code || x.Name == p.Name))
-                {
-                    rs.Success = false;
-                    rs.Message = "Tên quyền hoặc mã quyền này đã tồn tại";
-                }
-                else
-                {
-                    _db.Entry(p).State = EntityState.Modified;
-                    _db.SaveChanges();
-                    rs.Success = true;
-                    rs.Message = "Sửa thành công";
-                }
+                //if (_db.Permissions.Any(x => x.Code == p.Code || x.Name == p.Name))
+                //{
+                //    rs.Success = false;
+                //    rs.Message = "Tên quyền hoặc mã quyền này đã tồn tại";
+                //}
+                //else
+                //{
+                _db.Entry(p).State = EntityState.Modified;
+                _db.SaveChanges();
+                rs.Success = true;
+                rs.Message = "Sửa thành công";
+                //}
             }
             catch (Exception)
             {
@@ -166,12 +166,38 @@ namespace WebApplication1.Controllers
           .ToList();
             return View(lstActiNews);
         }
+        public ActionResult CreateActivitiesNews()
+        {
+            ActivitiesAndNew activitiesAndNew = new ActivitiesAndNew();
+            List<Category> lstCategories = _db.Categories.Where(x => x.IsActive).ToList();
+            if (activitiesAndNew != null)
+            {
+                EditActitiviesNewModel model = new EditActitiviesNewModel()
+                {
+                    activitiesAndNew = activitiesAndNew,
+                    categories = lstCategories
+                };
+
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("ManageActivitiesNews");
+            }
+        }
         public ActionResult EditActivitiesNews(int id)
         {
             ActivitiesAndNew activitiesAndNew = _db.ActivitiesAndNews.Find(id);
+            List<Category> lstCategories = _db.Categories.Where(x => x.IsActive).ToList();
             if (activitiesAndNew != null)
             {
-                return View(activitiesAndNew);
+                EditActitiviesNewModel model = new EditActitiviesNewModel()
+                {
+                    activitiesAndNew = activitiesAndNew,
+                    categories = lstCategories
+                };
+
+                return View(model);
             }
             else
             {
@@ -179,20 +205,94 @@ namespace WebApplication1.Controllers
             }
         }
         [HttpPost]
-        public ActionResult EditActivitiesNews(ActivitiesAndNew actiNews)
+        public JsonResult AddActivitiesNews(ActivitiesAndNew actiNews)
         {
-            var a = 2;
-            return View();
-
-            //ActivitiesAndNew activitiesAndNew = _db.ActivitiesAndNews.Find(id);
-            //if (activitiesAndNew != null)
-            //{
-            //    return View(activitiesAndNew);
-            //}
-            //else
-            //{
-            //    return RedirectToAction("ManageActivitiesNews");
-            //}
+            ApiResult rs = new ApiResult();
+            try
+            {
+                actiNews.IsActive = true;
+                actiNews.CreateOn = DateTime.Now;
+                actiNews.CreateBy = _db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name).id;
+                _db.Entry(actiNews).State = EntityState.Added;
+                _db.SaveChanges();
+                rs.Success = true;
+                rs.Message = "Tạo thành công";
+                //}
+            }
+            catch (Exception)
+            {
+                rs.Success = false;
+                rs.Message = "Tạo thất bại. Có lỗi trong khi tạo.";
+            }
+            return new JsonResult()
+            {
+                Data = rs,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+        [HttpPost]
+        public JsonResult EditActivities(ActivitiesAndNew actiNews)
+        {
+            ApiResult rs = new ApiResult();
+            try
+            {
+                //if (_db.ActivitiesAndNews.Any(x => x.Title == actiNews.Title && x.CategoryId == actiNews.CategoryId))
+                //{
+                //    rs.Success = false;
+                //    rs.Message = "Tên bài viết này đã tồn tại";
+                //}
+                //else
+                //{
+                actiNews.IsActive = true;
+                actiNews.CreateOn = DateTime.Now;
+                _db.Entry(actiNews).State = EntityState.Modified;
+                _db.SaveChanges();
+                rs.Success = true;
+                rs.Message = "Sửa thành công";
+                //}
+            }
+            catch (Exception)
+            {
+                rs.Success = false;
+                rs.Message = "Sửa thất bại. Có lỗi trong khi sửa.";
+            }
+            return new JsonResult()
+            {
+                Data = rs,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+        }
+        [HttpDelete]
+        public JsonResult DeleteActivitiesNews()
+        {
+            int id = 9;
+            ApiResult rs = new ApiResult();
+            try
+            {
+                ActivitiesAndNew activitiesAndNew = _db.ActivitiesAndNews.Find(id);
+                if (activitiesAndNew != null)
+                {
+                    _db.Entry(activitiesAndNew).State = EntityState.Deleted;
+                    _db.SaveChanges();
+                    rs.Success = true;
+                    rs.Message = "Xóa thành công";
+                }
+                else
+                {
+                    rs.Success = false;
+                    rs.Message = "Không tìm thấy bài viết này";
+                }
+            }
+            catch (Exception)
+            {
+                rs.Success = false;
+                rs.Message = "Xóa thất bại. Có lỗi trong khi xóa.";
+            }
+            return new JsonResult()
+            {
+                Data = rs,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
         }
     }
 }
