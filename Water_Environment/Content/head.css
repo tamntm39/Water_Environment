@@ -23,24 +23,18 @@ img {
     align-items: center;
     flex-wrap: wrap;
 }
-.head-left {
-    display: flex;
-    /*padding-left: 200px;*/
-}
-    .head-left a{
-        text-decoration: none;
+    .header p {
         color: white;
     }
-        .head-left a:hover {
-            text-decoration: underline;
-            color: yellow;
-        }
-    .head-left a i{
+.head-left {
+    display: flex;
+}
+    .head-left p i {
         font-size: 22px;
     }
-    .head-left-email {
-        padding-right: 30px;
-    }
+.head-left-email p{
+    padding-right: 30px;
+}
 
 
 /*---------- Search ---------*/
@@ -56,6 +50,7 @@ img {
     box-shadow: 0 10px 25px rgba(0, 0, 0, .3);
     position: relative;
     top: 0;
+    z-index: 2;
 }
     .box input {
         width: 0;
@@ -65,14 +60,31 @@ img {
         transition: 0.8s;
         background: transparent;
         width: 400px;
-        height: 20px;
+        height: 30px;
         font-size: 15px;
+        font-family: 'Sans Serif Collection';
     }
     .box a .bx {
         color: #1c3961;
         margin-top: 5px;
         font-size: 20px;
     }
+input:invalid ~ span::after {
+    content: "✖";
+    top: 9px;
+    padding-right: 10px;
+    left: 14px;
+    position: absolute;
+    font-size: 11px;
+}
+input:valid ~ span::after {
+    content: "✓";
+    top: 5px;
+    padding-right: 10px;
+    left: 16px;
+    position: absolute;
+    font-size: 18px;
+}
 /*---------------------------*/
 
 /*---------- Login ----------*/
@@ -409,14 +421,10 @@ img.resize{
     justify-content: space-around;
     
 }
-    .footer a{
-        text-decoration: none;
+    .footer p{
         color: white;
     }
-    .footer a:hover{
-        text-decoration: underline;
-        color: yellow;
-    }
+
     .left-head-ft{
 
     }

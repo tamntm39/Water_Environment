@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .suggestions {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 350px;
+            max-height: 160px;
+            overflow: auto;
+            border: 1px solid whitesmoke;
+            top: 37px;
+            left: 0px;
+            border-top: 25px;
+            border-radius: 5px;
+            padding-top: 0px;
+            z-index: 0;
+        }
+            .suggestions a {
+                padding: 8px 5px 5px 39px;
+                text-decoration: none;
+                display: block;
+                color: black;
+            }
+                .suggestions a:hover {
+                    background-color: grey;
+                }
+        * {
+            box-sizing: border-box;
+        }
+        #myUL {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0;
+        }
+        /*#myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px;*/ /* Prevent double borders */
+        /*background-color: #f6f6f6;
+            padding: 12px 100px 12px 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: none;
+        }
+
+            #myUL li a:hover:not(.header) {
+                background-color: grey;
+            }*/
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="search"
+               placeholder="Search..."
+               spellcheck="false"
+               list="options"
+               required
+               size="15"
+               minlength="4"
+               maxlength="100"
+               id="search"
+               onkeydown="preventEnterKey(event)"
+               oninput="myFunction(this.value)">
+
+        <a href="#"><i class='bx bx-search-alt-2 bx-tada'></i></a>
+        <span class="validity"></span>
+        <ul class="suggestions" id="myUL"></ul>
+
+        <datalist id="options">
+            <option value="adress Email">
+            <option value="bank">
+            <option value="chat">
+            <option value="donate">
+            <option value="đại dương">
+            <option value="go">
+            <option value="trang chủ">
+            <option value="đăng nhập">
+            <option value="nước ngọt">
+            <option value="thông tin nhóm">
+        </datalist>
+    </div>
+
+
+    <script>
+        function preventEnterKey(event) {
+            var search = document.getElementById("search").value;
+
+            var suggestionData = [
+                { link: "adress Email", path: "" },
+                { link: "bank", path: "" },
+                { link: "chat", path: "" },
+                { link: "donate", path: "" },
+                { link: "đại dương", path: "/ActivitiesNews/Content/3" },
+                { link: "go", path: "" },
+                { link: "trang chủ", path: "/Home/Index" },
+                { link: "đăng nhập", path: "/Login/index" },
+                { link: "nước ngọt", path: "/ActivitiesNews/Content/4" },
+                { link: "thông tin nhóm", path: "/Home/AboutUs" }
+            ];
+
+            if (event.key === "Enter") {
+                if (search === "") {
+                    event.preventDefault();
+                    alert("Vui lòng nhập trước khi nhấn Enter!");
+                }
+                for (var i = 0; i < suggestionData.length; i++) {
+                    //gợi ý bỏ dấu
+                    var hintWithDiacritics = suggestionData[i].link;
+                    var hintWithoutDiacritics = removeDiacritics(hintWithDiacritics);
+                    //nhập bỏ dấu
+                    var inputWithDiacritics = search;
+                    var inputWithoutDiacritics = removeDiacritics(inputWithDiacritics);
+
+                    if (hintWithoutDiacritics === inputWithoutDiacritics) {
+                        window.location.href = suggestionData[i].path;
+                    }
+                }
+            }
+        }
+        function myFunction(input) {
+            const suggestions = document.getElementById("myUL");
+            suggestions.innerHTML = "";
+
+            if (input.length === 0) {
+                suggestions.style.display = "none";
+                return;
+            }
+
+            // Replace this with your own suggestion logic
+            const suggestionData = [
+                { link: "adress Email", path: "" },
+                { link: "bank", path: "" },
+                { link: "chat", path: "" },
+                { link: "donate", path: "" },
+                { link: "đại dương", path: "/ActivitiesNews/Content/3" },
+                { link: "go", path: "" },
+                { link: "trang chủ", path: "/Home/Index" },
+                { link: "đăng nhập", path: "/Login/index" },
+                { link: "nước ngọt", path: "/ActivitiesNews/Content/4" },
+                { link: "thông tin nhóm", path: "/Home/AboutUs" }
+            ];
+
+            for (let i = 0; i < suggestionData.length; i++) {
+                var inputWithDiacritics = suggestionData[i].link;
+                var inputWithoutDiacritics = removeDiacritics(inputWithDiacritics);
+
+                if (suggestionData[i].link.toLowerCase().includes(input.toLowerCase()) ||
+                    inputWithoutDiacritics.toLowerCase().includes(input.toLowerCase())) {
+                    var optionElement = document.createElement("li");
+                    const suggestion = document.createElement("a");//link
+
+                    suggestion.href = suggestionData[i].path;
+                    suggestion.innerText = suggestionData[i].link;
+
+                    optionElement.appendChild(suggestion);
+                    suggestions.appendChild(suggestion);
+                }
+
+            }
+            optionElement.style.display = "block";
+            suggestions.style.display = "block";
+        }
+        function removeDiacritics(input) {
+            return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+    </script>
+</body>
+</html>

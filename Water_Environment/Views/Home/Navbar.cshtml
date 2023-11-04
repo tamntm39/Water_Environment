@@ -1,7 +1,7 @@
 ﻿<div class="main-header" id="myHeader">
     <div class="container">
         <div class="logo-wrap">
-            <img src="~/Images/logo_home.png" alt="Logo Image" />
+            <img src="~/Images/logo_home.png" alt="Logo Image" onclick="ToHome()"/>
         </div>
         <div class="nav-wrap">
             <nav class="nav-desktop">
@@ -41,3 +41,8 @@
         </div>
     </div>
 </div>
+<script>
+    function ToHome() {
+        window.location.href = "/Home/Index";
+    }
+</script>

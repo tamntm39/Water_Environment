@@ -291,6 +291,10 @@
     <Content Include="Views\Home\Navbar.cshtml" />
     <Content Include="Views\Home\Synthetic.cshtml" />
     <Content Include="Views\Admin\CreateActivitiesNews.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\Shared\BackToTop.cshtml" />
+    <Content Include="Views\Shared\Page_Search.cshtml" />
+    <Content Include="Views\Shared\Page_Search_Amin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
