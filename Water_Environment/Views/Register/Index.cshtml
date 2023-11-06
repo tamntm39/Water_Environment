@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
+<link href="~/Content/Register.css" rel="stylesheet" />
 
 <div class="login">
     <img src="~/Images/eberhard-grossgasteiger-cs0sK0gzqCU-unsplash.jpg" alt="image" class="login__bg" />
@@ -20,7 +21,7 @@
 
         @* Title *@
         @* ===================================================== *@
-        <h1 class="login__title" id="loginT">Login</h1>
+        <h1 class="login__title" id="registerT">Register</h1>
         @* ===================================================== *@
         @Html.AntiForgeryToken()
         <div class="login__inputs">
@@ -30,8 +31,7 @@
                        placeholder="Email" required
                        class="login__input"
                        id="username"
-                       name="Username"
-                       onkeydown="preventEnterKey(event)" />
+                       name="Username" />
                 <i class="ri-mail-fill"></i>
             </div>
             @* Password *@
@@ -40,11 +40,22 @@
                        placeholder="Password" required
                        name="Password"
                        class="login__input"
-                       id="password"
-                       onclick="preventEnterKey(event)" />
+                       id="password" />
                 <div class="cont-icon">
                     <i class="ri-eye-line" id="eye-open" onclick="toggleEyeClose()"></i>
                     <i class="ri-eye-close-line" id="eye-close" onclick="toggleEyeOpen()"></i>
+                    <i class="ri-lock-2-fill"></i>
+                </div>
+            </div>
+            @* Confirmed Password *@
+            <div class="login__box" id="confirmPsw">
+                <input type="password"
+                       placeholder="Confirm Password" required
+                       class="login__input"
+                       id="Cpassword" />
+                <div class="cont-icon">
+                    <i class="ri-eye-line" id="eye-open2" onclick="toggleEyeClose2()"></i>
+                    <i class="ri-eye-close-line" id="eye-close2" onclick="toggleEyeOpen2()"></i>
                     <i class="ri-lock-2-fill"></i>
                 </div>
             </div>
@@ -60,34 +71,49 @@
             <a href="#" class="login__forgot">Forgot Password?</a>
         </div>
 
-        @* Button Login *@
+        @* Button Register *@
         @* ========================================================== *@
-        <button type="button" class="login__button" id="loginB" onclick="LoginForm()">Login</button>
-        @Html.ValidationSummary(false, "", new { @class = "text-danger " })
+        <button type="button" class="login__button" id="registerB" onclick="RegisterForm()">Register</button>
         @* =========================================================== *@
 
-        @* Move to Register page *@
+        @* Move to Login page *@
         @* ========================================================== *@
-        <div class="login__register" id="login__register">
-            Don't have an account?
-            <a href="/Register/Index" id="register">Register</a>
+        <div class="login__register" id="login__login">
+            You have an account?
+            <a href="/Login/index" id="login">Login</a>
         </div>
         @* ========================================================== *@
     </form>
 </div>
 
 <script>
-    function LoginForm() {
+    function RegisterForm() {
         var username = document.getElementById("username").value;
         var password = document.getElementById("password").value;
+        var Cpassword = document.getElementById("Cpassword").value;
 
-        if (username === "" || password === "") {
+        if (username === "" || password === "" || Cpassword === "") {
             alert("Fill in blank..!");
         }
+        else if (password.length < 8) {
+            alert("At least 8 characters!");
+        }
+        else if (!/[A-Z]/.test(password)) {
+            alert("At least a upper letter!");
+        }
+        else if (!/[a-z]/.test(password)) {
+            alert("At least a lower letter!");
+        }
+        else if (!/\d/.test(password)) {
+            alert("At least a number");
+        }
+        else if (password !== Cpassword) {
+            alert("Password not the same..!")
+        }
         else {
+            //window.location.href = "#";
             var form = document.getElementById("LoginForm");
             form.submit();
-            //window.location.href = "Home";
         }
     }
     function BackToHome() {
