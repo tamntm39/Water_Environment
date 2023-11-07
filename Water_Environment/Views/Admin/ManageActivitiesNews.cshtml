@@ -80,8 +80,10 @@
         if (!confirm("Bạn có thực sự muốn xóa bài viết này không?")) return;
         $.ajax({
             url: '/Admin/DeleteActivitiesNews/' + id,
-            type: 'DELETE'
+            type: 'POST',
+            dataType: 'text',
         }).done(function (result) {
+            console.log(result, "result");
             var rsJson = JSON.parse(result);
             if (rsJson.Success == true) {
                 alert(rsJson.Message);

@@ -8,12 +8,6 @@ namespace Water_Environment.Models.Home
     public class CategoryContent
     {
         public string CateName { get; set; }
-        public List<ContentOfCate> CateContent { get; set; }
-
-        public class ContentOfCate
-        {
-            public string Title { get; set; }
-            public string url { get; set; }
-        }
+        public List<ActivitiesAndNew> CateContent { get; set; }
     }
 }

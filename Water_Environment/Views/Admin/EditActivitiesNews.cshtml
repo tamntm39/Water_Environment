@@ -17,6 +17,10 @@
             <input type="text" class="form-control" id="new-title" value="@Model.activitiesAndNew.Title">
         </div>
         <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Mô tả ngắn</label>
+            <input type="text" class="form-control" id="new-short-desc" value="@Model.activitiesAndNew.ShortDescription">
+        </div>
+        <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Loại bài viết</label>
             @*<input type="text" class="form-control" name="Title" value="@Model.Title">*@
             <select class="form-select" aria-label="Default select example" id="new-category">
@@ -34,6 +38,13 @@
             </select>
         </div>
         <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Hình ảnh</label>
+            <div style=" width: 100%; height: 250px; align-items: center }">
+                <img src="@Url.Content(Model.activitiesAndNew.Img)" style=" max-width: 100%; max-height: 100%; }" id="previewImg" />
+                <input type="file" id="imageFile" name="imageFile" onchange="ChangeImage(this, document.getElementById('previewImg'))"
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Nội dung bài viết</label>
             @*<div id="summernote" name="Content"></div>*@
             <textarea id="editor">@Model.activitiesAndNew.Content</textarea>
@@ -41,46 +52,41 @@
         </div>
 
         @*<div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>*@
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>*@
         <button type="button" onclick="SaveInfo()" class="btn btn-primary">Submit</button>
     </form>
 </div>
 
 
 <script>
-    function sanitize(input) {
-        // Replace or remove potentially dangerous characters and content
-        var sanitizedInput = input.replace(/<script>/gi, ''); // Remove script tags
-        sanitizedInput = sanitizedInput.replace(/<.*?script.*?>/gi, ''); // Remove anything that resembles a script tag
-        // You can add more sanitization rules as needed
 
-        return sanitizedInput;
-    }
     function SaveInfo() {
         var editorContent = tinymce.get('editor').getContent();
         var id = @Model.activitiesAndNew.id;
         var categoryId = $("#new-category").val();
         var title = $("#new-title").val();
-        if (editorContent == '' || title == '' || categoryId == '') {
+        var desc = $("#new-short-desc").val();
+        var formData = new FormData();
+        formData.append("id", id);
+        formData.append("Title", title);
+        formData.append("CategoryId", categoryId);
+        formData.append("Content", editorContent);
+        formData.append("ShortDescription", desc);
+        formData.append("CreateBy", @Model.activitiesAndNew.CreateBy);
+        formData.append("UploadImage", $("#imageFile")[0].files[0]);  
+        if (editorContent == '' || title == '' || categoryId == '' || desc == '') {
             alert('Vui lòng nhập đủ thông tin');
             return;
         }
-        //var encodedEditorContent = $('<div />').text(editorContent).html();
         $.ajax({
             url: '/Admin/EditActivities',
             type: 'POST',
-            dataType: 'text',
-            data: {
-                id: id,
-                Title: title,
-                CategoryId: categoryId, 
-                Content: editorContent,
-                CreateBy: @Model.activitiesAndNew.CreateBy
-            }
-        }).done(function (result) {
-            var rsJson = JSON.parse(result);
+            processData: false,
+            contentType: false,
+            data: formData,
+        }).done(function (rsJson) {
             if (rsJson.Success == true) {
                 alert(rsJson.Message);
                 window.location.href = '/Admin/ManageActivitiesNews'
@@ -92,7 +98,16 @@
             }
         });
     }
+    function ChangeImage(UploadImage, previewImg) {
+        if (UploadImage.files && UploadImage.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(previewImg).attr('src', e.target.result);
 
+            }
+            reader.readAsDataURL(UploadImage.files[0]);
+        }
+    }
 
 </script>
 

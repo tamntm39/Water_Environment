@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Water_Environment.Models;
@@ -25,8 +27,13 @@ namespace Water_Environment.Controllers
             }
             else
             {
+                activities.ViewCount = activities.ViewCount + 1;    
+                _db.Entry(activities).State = EntityState.Modified;
+                _db.SaveChanges();
                 return View(activities);
             }
-        } 
+        }
+
     }
+
 }

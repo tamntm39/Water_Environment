@@ -133,6 +133,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,8 +164,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Home\NewAndActivitiesHome.cs" />
     <Compile Include="Models\Home\CategoryContent.cs" />
     <Compile Include="Models\Permission.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
@@ -205,6 +210,7 @@
     <Content Include="Content\head.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Register.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -277,7 +283,6 @@
     <Content Include="Views\Shared\_MasterLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\index.cshtml" />
-    <Content Include="Views\Login\Index1.cshtml" />
     <Content Include="Views\Activate\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
@@ -291,9 +296,11 @@
     <Content Include="Views\Home\Navbar.cshtml" />
     <Content Include="Views\Home\Synthetic.cshtml" />
     <Content Include="Views\Admin\CreateActivitiesNews.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\img\" />
     <Folder Include="Views\Information\" />
   </ItemGroup>
   <ItemGroup>

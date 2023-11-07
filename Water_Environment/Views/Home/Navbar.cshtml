@@ -1,7 +1,7 @@
 ﻿<div class="main-header" id="myHeader">
     <div class="container">
         <div class="logo-wrap">
-            <img src="~/Images/logo_home.png" alt="Logo Image" />
+            <a href="~/Home"> <img src="~/Images/logo_home.png" alt="Logo Image" /> </a>
         </div>
         <div class="nav-wrap">
             <nav class="nav-desktop">
@@ -22,7 +22,7 @@
                                 <ul class="sub-menu">
                                     @foreach (var itemContent in @item.CateContent)
                                     {
-                                        <li><a href="@itemContent.url">@itemContent.Title</a></li>
+                                        <li><a href="/ActivitiesNews/Content/@itemContent.id">@itemContent.Title</a></li>
                                     }
                                 </ul>
                             </li>

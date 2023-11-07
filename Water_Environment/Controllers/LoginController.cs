@@ -16,6 +16,15 @@ namespace Water_Environment.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Admin");
+                //    if (User.IsInRole("Admin"))
+                //    {
+                //        Response.Redirect("~/AdminController");
+
+                //    }
+                //    else if (User.IsInRole("User"))
+                //    {
+                //        Response.Redirect("~/UserController");
+                //    }
             }
             else
             {
@@ -35,16 +44,31 @@ namespace Water_Environment.Controllers
             {
                 User userDb = _db.Users.FirstOrDefault(u => u.UserName.ToLower() == user.Username.ToLower() && u
                .PassWord == user.Password);
-                if (userDb != null)
+                if (userDb != null && userDb.UserPermission == 1)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);
+                    Session["User"] = user.Username;
+                    var userRole = Session["UserRole"] as string;
+                    var isUserAdmin = userDb.UserPermission == 1;
                     Session["Username"] = user.Username;
-                    Session["UserId"] = userDb.id;
+
                     return RedirectToAction("Index", "Admin");
+                }
+                else if (userDb != null)
+                {
+                    Session["UserLogined"] = true;
+                    Session["UserId"] = userDb.id;
+                    Session["Username"] = user.Username;
+                    return RedirectToAction("Index", "Home");
                 }
             }
             ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không đúng !");
             return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

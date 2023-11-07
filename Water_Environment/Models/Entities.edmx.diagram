@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7de5a874354847558eef5db0225e4300" Name="Diagram1">
-        <EntityTypeShape EntityType="Water_EnvironmentModel.ActivitiesAndNew" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Water_EnvironmentModel.Category" Width="1.5" PointX="5.25" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Water_EnvironmentModel.Comment" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Water_EnvironmentModel.Permission" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Water_EnvironmentModel.User" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+      <Diagram DiagramId="5c640dbb77ac42ed87c1c0e9ae1cd337" Name="Diagram1">
+        <EntityTypeShape EntityType="Water_EnvironmentModel.ActivitiesAndNew" Width="1.5" PointX="7.625" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_EnvironmentModel.Category" Width="1.5" PointX="2.625" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_EnvironmentModel.Comment" Width="1.5" PointX="10" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_EnvironmentModel.Permission" Width="1.5" PointX="0.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_EnvironmentModel.sysdiagram" Width="1.5" PointX="8.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Water_EnvironmentModel.User" Width="1.5" PointX="5.125" PointY="0.5" IsExpanded="true" />
         <AssociationConnector Association="Water_EnvironmentModel.activitiesandnews_categoryid_foreign" ManuallyRouted="false" />
         <AssociationConnector Association="Water_EnvironmentModel.activitiesandnews_createby_foreign" ManuallyRouted="false" />
         <AssociationConnector Association="Water_EnvironmentModel.comment_postid_foreign" ManuallyRouted="false" />

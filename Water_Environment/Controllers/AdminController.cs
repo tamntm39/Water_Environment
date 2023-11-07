@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -146,6 +147,7 @@ namespace WebApplication1.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 
@@ -169,6 +171,7 @@ namespace WebApplication1.Controllers
         public ActionResult CreateActivitiesNews()
         {
             ActivitiesAndNew activitiesAndNew = new ActivitiesAndNew();
+            activitiesAndNew.Img = "~/Content/img/user.png";
             List<Category> lstCategories = _db.Categories.Where(x => x.IsActive).ToList();
             if (activitiesAndNew != null)
             {
@@ -177,7 +180,6 @@ namespace WebApplication1.Controllers
                     activitiesAndNew = activitiesAndNew,
                     categories = lstCategories
                 };
-
                 return View(model);
             }
             else
@@ -213,11 +215,19 @@ namespace WebApplication1.Controllers
                 actiNews.IsActive = true;
                 actiNews.CreateOn = DateTime.Now;
                 actiNews.CreateBy = _db.Users.FirstOrDefault(x => x.UserName == User.Identity.Name).id;
+                if (actiNews.UploadImage != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(actiNews.UploadImage.FileName);
+                    string extent = Path.GetExtension(actiNews.UploadImage.FileName);
+                    filename = filename + extent;
+                    actiNews.Img = "~/Content/img/" + filename;
+                    actiNews.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/img/"), filename));
+                }
                 _db.Entry(actiNews).State = EntityState.Added;
                 _db.SaveChanges();
                 rs.Success = true;
                 rs.Message = "Tạo thành công";
-                //}
+                
             }
             catch (Exception)
             {
@@ -234,6 +244,7 @@ namespace WebApplication1.Controllers
         public JsonResult EditActivities(ActivitiesAndNew actiNews)
         {
             ApiResult rs = new ApiResult();
+            // Initialize the actiNews object
             try
             {
                 //if (_db.ActivitiesAndNews.Any(x => x.Title == actiNews.Title && x.CategoryId == actiNews.CategoryId))
@@ -243,6 +254,14 @@ namespace WebApplication1.Controllers
                 //}
                 //else
                 //{
+                if (actiNews.UploadImage != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(actiNews.UploadImage.FileName);
+                    string extent = Path.GetExtension(actiNews.UploadImage.FileName);
+                    filename = filename + extent;
+                    actiNews.Img = "~/Content/img/" + filename;
+                    actiNews.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/img/"), filename));
+                }
                 actiNews.IsActive = true;
                 actiNews.CreateOn = DateTime.Now;
                 _db.Entry(actiNews).State = EntityState.Modified;
@@ -262,10 +281,9 @@ namespace WebApplication1.Controllers
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
         }
-        [HttpDelete]
-        public JsonResult DeleteActivitiesNews()
+        [HttpPost]
+        public JsonResult DeleteActivitiesNews(int id)
         {
-            int id = 9;
             ApiResult rs = new ApiResult();
             try
             {
