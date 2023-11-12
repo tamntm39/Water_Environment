@@ -1,7 +1,7 @@
 ﻿<div class="main-header" id="myHeader">
     <div class="container">
         <div class="logo-wrap">
-            <img src="~/Images/logo_home.png" alt="Logo Image" onclick="ToHome()"/>
+            <img src="~/Images/logo_home.png" alt="Logo Image" onclick="ToHome()" />
         </div>
         <div class="nav-wrap">
             <nav class="nav-desktop">
@@ -28,7 +28,10 @@
                             </li>
                         }
                     }
-                    <li><a href="">Tham gia</a></li>
+                    @if (@Session["UserLogined"]?.ToString() == "True")
+                    {
+                        <li><a href="/Donate">Ủng hộ</a></li>
+                    }
                     <li><a href="">Liên hệ</a></li>
                 </ul>
             </nav>

@@ -28,6 +28,7 @@ namespace Water_Environment.Models
         public virtual DbSet<ActivitiesAndNew> ActivitiesAndNews { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Donate> Donates { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }

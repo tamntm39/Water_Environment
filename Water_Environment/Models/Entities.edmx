@@ -40,6 +40,18 @@
           <Property Name="Content" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="PostId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Donate">
+          <Key>
+            <PropertyRef Name="DonateId" />
+          </Key>
+          <Property Name="DonateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DonateCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="MoneyDonate" Type="int" />
+          <Property Name="CreateOn" Type="datetime" Nullable="false" />
+          <Property Name="IsDonateSuccess" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Permission">
           <Key>
             <PropertyRef Name="id" />
@@ -131,6 +143,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Donate_User">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Donate" Type="Self.Donate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Donate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="users_userpermission_foreign">
           <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -147,6 +171,7 @@
           <EntitySet Name="ActivitiesAndNews" EntityType="Self.ActivitiesAndNews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donate" EntityType="Self.Donate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -169,6 +194,10 @@
           <AssociationSet Name="comment_usercomment_foreign" Association="Self.comment_usercomment_foreign">
             <End Role="Users" EntitySet="Users" />
             <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donate_User" Association="Self.FK_Donate_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Donate" EntitySet="Donate" />
           </AssociationSet>
           <AssociationSet Name="users_userpermission_foreign" Association="Self.users_userpermission_foreign">
             <End Role="Permission" EntitySet="Permission" />
@@ -222,6 +251,19 @@
           <NavigationProperty Name="ActivitiesAndNew" Relationship="Self.comment_postid_foreign" FromRole="Comment" ToRole="ActivitiesAndNews" />
           <NavigationProperty Name="User" Relationship="Self.comment_usercomment_foreign" FromRole="Comment" ToRole="Users" />
         </EntityType>
+        <EntityType Name="Donate">
+          <Key>
+            <PropertyRef Name="DonateId" />
+          </Key>
+          <Property Name="DonateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DonateCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="MoneyDonate" Type="Int32" />
+          <Property Name="CreateOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDonateSuccess" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Donate_User" FromRole="Donate" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Permission">
           <Key>
             <PropertyRef Name="id" />
@@ -256,6 +298,7 @@
           <NavigationProperty Name="ActivitiesAndNews" Relationship="Self.activitiesandnews_createby_foreign" FromRole="Users" ToRole="ActivitiesAndNews" />
           <NavigationProperty Name="Categories" Relationship="Self.category_createby_foreign" FromRole="Users" ToRole="Category" />
           <NavigationProperty Name="Comments" Relationship="Self.comment_usercomment_foreign" FromRole="Users" ToRole="Comment" />
+          <NavigationProperty Name="Donates" Relationship="Self.FK_Donate_User" FromRole="Users" ToRole="Donate" />
           <NavigationProperty Name="Permission" Relationship="Self.users_userpermission_foreign" FromRole="Users" ToRole="Permission" />
         </EntityType>
         <Association Name="activitiesandnews_categoryid_foreign">
@@ -318,6 +361,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Donate_User">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Donate" Type="Self.Donate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Donate">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="users_userpermission_foreign">
           <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
@@ -334,6 +389,7 @@
           <EntitySet Name="ActivitiesAndNews" EntityType="Self.ActivitiesAndNew" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Donates" EntityType="Self.Donate" />
           <EntitySet Name="Permissions" EntityType="Self.Permission" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -356,6 +412,10 @@
           <AssociationSet Name="comment_usercomment_foreign" Association="Self.comment_usercomment_foreign">
             <End Role="Users" EntitySet="Users" />
             <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donate_User" Association="Self.FK_Donate_User">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Donate" EntitySet="Donates" />
           </AssociationSet>
           <AssociationSet Name="users_userpermission_foreign" Association="Self.users_userpermission_foreign">
             <End Role="Permission" EntitySet="Permissions" />
@@ -403,6 +463,19 @@
                 <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donates">
+            <EntityTypeMapping TypeName="Water_EnvironmentModel.Donate">
+              <MappingFragment StoreEntitySet="Donate">
+                <ScalarProperty Name="DonateId" ColumnName="DonateId" />
+                <ScalarProperty Name="DonateCode" ColumnName="DonateCode" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MoneyDonate" ColumnName="MoneyDonate" />
+                <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+                <ScalarProperty Name="IsDonateSuccess" ColumnName="IsDonateSuccess" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

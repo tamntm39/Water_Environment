@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActivitiesNewsController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -150,6 +151,9 @@
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Custom\ApiResult.cs" />
+    <Compile Include="Models\Donate.cs">
+      <DependentUpon>Entities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,6 +171,8 @@
     </Compile>
     <Compile Include="Models\Home\NewAndActivitiesHome.cs" />
     <Compile Include="Models\Home\CategoryContent.cs" />
+    <Compile Include="Models\Payments\DonateModel.cs" />
+    <Compile Include="Models\Payments\VnPayLibrary.cs" />
     <Compile Include="Models\Permission.cs">
       <DependentUpon>Entities.tt</DependentUpon>
     </Compile>
@@ -303,6 +309,8 @@
     <Content Include="Views\Shared\Page_Search_Amin.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Donate\Index.cshtml" />
+    <Content Include="Views\Donate\VnpayReturn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -16,15 +16,10 @@ namespace Water_Environment.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Admin");
-                //    if (User.IsInRole("Admin"))
-                //    {
-                //        Response.Redirect("~/AdminController");
-
-                //    }
-                //    else if (User.IsInRole("User"))
-                //    {
-                //        Response.Redirect("~/UserController");
-                //    }
+            }
+            else if (Session["UserLogined"] != null && (bool)Session["UserLogined"])
+            {
+                return RedirectToAction("Index", "Home");
             }
             else
             {
@@ -47,11 +42,8 @@ namespace Water_Environment.Controllers
                 if (userDb != null && userDb.UserPermission == 1)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);
-                    Session["User"] = user.Username;
-                    var userRole = Session["UserRole"] as string;
-                    var isUserAdmin = userDb.UserPermission == 1;
                     Session["Username"] = user.Username;
-
+                    Session["UserId"] = userDb.id;
                     return RedirectToAction("Index", "Admin");
                 }
                 else if (userDb != null)

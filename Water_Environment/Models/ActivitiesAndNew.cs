@@ -34,14 +34,11 @@ namespace Water_Environment.Models
         public int ViewCount { get; set; }
         public string Img { get; set; }
         public string ShortDescription { get; set; }
-    
+        [NotMapped]
+        public HttpPostedFileBase UploadImage { get; set; }
         public virtual Category Category { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
-        [NotMapped]
-        public HttpPostedFileBase UploadImage { get; set; }
-
-     
     }
 }

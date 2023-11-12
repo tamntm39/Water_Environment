@@ -20,6 +20,7 @@ namespace Water_Environment.Models
             this.ActivitiesAndNews = new HashSet<ActivitiesAndNew>();
             this.Categories = new HashSet<Category>();
             this.Comments = new HashSet<Comment>();
+            this.Donates = new HashSet<Donate>();
         }
     
         public int id { get; set; }
@@ -36,6 +37,8 @@ namespace Water_Environment.Models
         public virtual ICollection<Category> Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Donate> Donates { get; set; }
         public virtual Permission Permission { get; set; }
     }
 }
