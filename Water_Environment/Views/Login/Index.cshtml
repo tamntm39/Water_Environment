@@ -20,14 +20,14 @@
 
         @* Title *@
         @* ===================================================== *@
-        <h1 class="login__title" id="loginT">Login</h1>
+        <h1 class="login__title" id="loginT">Đăng nhập tài khoản</h1>
         @* ===================================================== *@
         @Html.AntiForgeryToken()
         <div class="login__inputs">
             @* Email *@
             <div class="login__box">
                 <input type="text"
-                       placeholder="Email" required
+                       placeholder="Tài khoản" required
                        class="login__input"
                        id="username"
                        name="Username"
@@ -37,7 +37,7 @@
             @* Password *@
             <div class="login__box" id="Psw">
                 <input type="password"
-                       placeholder="Password" required
+                       placeholder="Mật khẩu" required
                        name="Password"
                        class="login__input"
                        id="password"
@@ -50,27 +50,27 @@
             </div>
         </div>
 
-        <div class="login__check">
+        <!--<div class="login__check">-->
             @* Remember me *@
-            <div class="login__check-box">
+            <!--<div class="login__check-box">
                 <input type="checkbox" class="login__check-input" id="user-check" />
                 <label for="user-check" class="login__check-label">Remember me</label>
-            </div>
+            </div>-->
             @* Forgot Password *@
-            <a href="#" class="login__forgot">Forgot Password?</a>
-        </div>
+            <!--<a href="#" class="login__forgot">Forgot Password?</a>
+        </div>-->
 
         @* Button Login *@
         @* ========================================================== *@
-        <button type="button" class="login__button" id="loginB" onclick="LoginForm()">Login</button>
+    <button type="button" class="login__button" id="loginB" onclick="LoginForm()">Đăng nhập</button>
         @Html.ValidationSummary(false, "", new { @class = "text-danger " })
         @* =========================================================== *@
 
         @* Move to Register page *@
         @* ========================================================== *@
         <div class="login__register" id="login__register">
-            Don't have an account?
-            <a href="/Register/Index" id="register">Register</a>
+            Bạn chưa có tài khoản
+            <a href="/Register/Index" id="register">Đăng ký</a>
         </div>
         @* ========================================================== *@
     </form>

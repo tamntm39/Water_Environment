@@ -26,11 +26,6 @@ namespace Water_Environment.Controllers
                 return View();
             }
         }
-        //public ActionResult Login()
-        //{
-        //    //var customers = database.Customers.ToList();
-        //    return View();
-        //}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(UserModel user)
