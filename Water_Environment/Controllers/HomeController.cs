@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using Water_Environment.Core;
 using Water_Environment.Models;
 using Water_Environment.Models.ActivitiesNews;
 using Water_Environment.Models.Home;
@@ -19,8 +20,8 @@ namespace Water_Environment.Controllers
         {
             NewAndActivitiesHome lstNewsActi = new NewAndActivitiesHome();
             List<ActivitiesAndNew> activitiesAndNews = _db.ActivitiesAndNews.ToList();
-            lstNewsActi.NewsLatest = activitiesAndNews.OrderByDescending(x=>x.CreateOn).Take(3).ToList();
-            lstNewsActi.NewsHot = activitiesAndNews.OrderByDescending(x=>x.ViewCount).Take(3).ToList();
+            lstNewsActi.NewsLatest = activitiesAndNews.OrderByDescending(x => x.CreateOn).Take(3).ToList();
+            lstNewsActi.NewsHot = activitiesAndNews.OrderByDescending(x => x.ViewCount).Take(3).ToList();
             return View(lstNewsActi);
         }
 
@@ -42,7 +43,13 @@ namespace Water_Environment.Controllers
             }
             return PartialView(lstCateContent);
         }
-       
+        public ActionResult Search(string keySearch)
+        {
+            keySearch = keySearch.ToLower().NonUnicode();
+            IEnumerable<ActivitiesAndNew> lstNews = _db.ActivitiesAndNews.ToList();
+            List<ActivitiesAndNew> activitiesAndNews = lstNews.Where(x => x.Title.NonUnicode().ToLower().Contains(keySearch)).ToList();
+            return View(activitiesAndNews);
+        }
         public ActionResult AboutUs()
         {
             return View();

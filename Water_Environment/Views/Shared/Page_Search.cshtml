@@ -62,13 +62,14 @@
                maxlength="100"
                id="search"
                onkeydown="preventEnterKey(event)"
-               oninput="myFunction(this.value)">
+               @*oninput="myFunction(this.value)"*@
+               >
 
         <a href="#"><i class='bx bx-search-alt-2 bx-tada'></i></a>
-        <span class="validity"></span>
-        <ul class="suggestions" id="myUL"></ul>
+        @*<span class="validity"></span>
+        <ul class="suggestions" id="myUL"></ul>*@
 
-        <datalist id="options">
+        @*<datalist id="options">
             <option value="adress Email">
             <option value="bank">
             <option value="chat">
@@ -79,44 +80,48 @@
             <option value="đăng nhập">
             <option value="nước ngọt">
             <option value="thông tin nhóm">
-        </datalist>
+        </datalist>*@
     </div>
 
 
     <script>
         function preventEnterKey(event) {
-            var search = document.getElementById("search").value;
+            var searchValue = document.getElementById("search").value;
 
-            var suggestionData = [
-                { link: "adress Email", path: "" },
-                { link: "bank", path: "" },
-                { link: "chat", path: "" },
-                { link: "donate", path: "" },
-                { link: "đại dương", path: "/ActivitiesNews/Content/3" },
-                { link: "go", path: "" },
-                { link: "trang chủ", path: "/Home/Index" },
-                { link: "đăng nhập", path: "/Login/index" },
-                { link: "nước ngọt", path: "/ActivitiesNews/Content/4" },
-                { link: "thông tin nhóm", path: "/Home/AboutUs" }
-            ];
+            //var suggestionData = [
+            //    { link: "adress Email", path: "" },
+            //    { link: "bank", path: "" },
+            //    { link: "chat", path: "" },
+            //    { link: "donate", path: "" },
+            //    { link: "đại dương", path: "/ActivitiesNews/Content/3" },
+            //    { link: "go", path: "" },
+            //    { link: "trang chủ", path: "/Home/Index" },
+            //    { link: "đăng nhập", path: "/Login/index" },
+            //    { link: "nước ngọt", path: "/ActivitiesNews/Content/4" },
+            //    { link: "thông tin nhóm", path: "/Home/AboutUs" }
+            //];
 
             if (event.key === "Enter") {
                 if (search === "") {
                     event.preventDefault();
                     alert("Vui lòng nhập trước khi nhấn Enter!");
                 }
-                for (var i = 0; i < suggestionData.length; i++) {
-                    //gợi ý bỏ dấu
-                    var hintWithDiacritics = suggestionData[i].link;
-                    var hintWithoutDiacritics = removeDiacritics(hintWithDiacritics);
-                    //nhập bỏ dấu
-                    var inputWithDiacritics = search;
-                    var inputWithoutDiacritics = removeDiacritics(inputWithDiacritics);
-
-                    if (hintWithoutDiacritics === inputWithoutDiacritics) {
-                        window.location.href = suggestionData[i].path;
-                    }
+                else {
+                    window.location.href = "/Home/Search?keySearch=" + searchValue;
                 }
+
+                //for (var i = 0; i < suggestionData.length; i++) {
+                //    //gợi ý bỏ dấu
+                //    var hintWithDiacritics = suggestionData[i].link;
+                //    var hintWithoutDiacritics = removeDiacritics(hintWithDiacritics);
+                //    //nhập bỏ dấu
+                //    var inputWithDiacritics = search;
+                //    var inputWithoutDiacritics = removeDiacritics(inputWithDiacritics);
+
+                //    if (hintWithoutDiacritics === inputWithoutDiacritics) {
+                //        window.location.href = suggestionData[i].path;
+                //    }
+                //}
             }
         }
         function myFunction(input) {

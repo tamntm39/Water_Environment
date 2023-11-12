@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Water_Environment.Models.ActivitiesAndNew>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@*<section class="testimonial-page">
+        <div class="container">
+            <main class="customer-review">
+                @foreach (var item in Model)
+                {
+                    <div class="row">
+                        <div class="img-wrap">
+                            <img src="@Url.Content(item.Img)" alt="Customer Picture">
+                        </div>
+                        <div class="rewiew-content">
+                            <header>
+                                <h3>Very happy to find this institute!</h3>
+                                <p>I am very happy with the service provided by this institute. Now i have got the job as web developer in one of the reputed company of Nepal. Especially trainers are the Professionals from the field of information technology. Thankyou Lab Theme. Professionals from the field of information technology. Thankyou Lab Theme.</p>
+                            </header>
+                            <footer>
+                                <span><h4>Bibek Basnet</h4> <p>Web Developer</p></span>
+                                <div class="rateYo"></div>
+                            </footer>
+                        </div>
+                    </div>
+                }
+
+            </main>
+        </div>
+    </section>*@
+@*<section class="course-listing-page">
+        <div class="container">
+            <div class="grid" id="cGrid">
+                @foreach (var item in Model)
+                {
+                    <div class="grid-item business" data-category="business">
+                        <div class="img-wrap">
+                            <img src="@Url.Content(item.Img)" alt="courses picture">
+                        </div>
+                        <a href="#" class="learn-desining-banner-course">Learn Web Designing >>></a>
+                        <div class="box-body">
+                            <p>Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum Lorem Ipsum lorem ipsum</p>
+                            <section>
+                                <p><span>Duration:</span> 4 Years</p>
+                                <p><span>Class Time:</span> 6am-12am / 11am-5pm</p>
+                                <p><span>Fee:</span> 4,00,000</p>
+                            </section>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>*@
+
+
+<div class="page-heading">
+    <div class="container-box">
+        <h2>TÌM KIẾM</h2>
+    </div>
+
+    <div class="container-box">
+        <div class="popular-container">
+            @foreach (var itemContent in Model)
+            {
+                <div class="box-wrap" itemprop="event" itemscope>
+                    <div class="img-wrap">
+                        <img src="@Url.Content(@itemContent.Img)" alt="courses picture" />
+                    </div>
+                    <a href="/ActivitiesNews/Content/@itemContent.id"
+                       class="learn-desining-banner"
+                       target="_blank">Xem ngay</a>
+                    <div class="box-body">
+                        <strong>
+                            @itemContent.Title
+                        </strong>
+                        <p>
+                            @itemContent.ShortDescription
+                        </p>
+                        <section>
+                            <p><span>Ngày:</span> @itemContent.CreateOn</p>
+                        </section>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
