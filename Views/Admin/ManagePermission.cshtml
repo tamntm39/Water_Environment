@@ -1,0 +1,169 @@
+﻿@model IEnumerable<Water_Environment.Models.Permission>
+
+@{
+    ViewBag.Title = "ManagePermission";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách quyền</h2>
+
+<div class="text-right">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Thêm Quyền" data-bs-target="#ModalEdit">Thêm quyền</button>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-striped text-center" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tên quyền</th>
+                    <th scope="col">Mã quyền</th>
+                    <th scope="col">Kích hoạt</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Code</td>
+                        <td> <input class="form-check-input" type="checkbox" checked="@item.IsActive" disabled></td>
+                        <th>
+                            <div class="btn-group" role="group">
+                                @*<i class="fas fa-edit"></i>*@
+                                @*<button type="button" class="btn btn-primary" onclick="EditUser(@item.id)">Sửa</button>*@
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Sửa Quyền" data-bs-target="#ModalEdit" data-permission-id="@item.id" data-permission-name="@item.Name" data-permission-code="@item.Code" data-permission-active="@item.IsActive">Sửa</button>
+                                @*<button type="button" class="btn btn-primary" data-bs-toggle="modal" title="Sửa Quyền" data-bs-target="#ModalEdit" data-permission-id="@item.id" data-permission-name="@item.Name" data-permission-code="@item.Code" data-permission-active="@item.IsActive">Khôi phục mật khẩu</button>*@
+                            </div>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="modal fade" id="ModalEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModelTitle">New message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3 d-none">
+                                <label for="permission-id" class="col-form-label">ID:</label>
+                                <input type="text" class="form-control" id="permission-id">
+                            </div>
+                            <div class="mb-3">
+                                <label for="permission-name" class="col-form-label">Tên quyền:</label>
+                                <input type="text" class="form-control" id="permission-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="permission-code" class="col-form-label">Mã quyền:</label>
+                                <input class="form-control" id="permission-code"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="permission-active" class="col-form-label">Kích hoạt:</label>
+                                <input class="form-control-input" type="checkbox" id="permission-active" checked>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" onclick="SaveInfo()">Lưu lại</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var modalEdit = document.getElementById('ModalEdit');
+    modalEdit.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget;
+        var modalActiveValue = modalEdit.querySelector('#permission-active')
+        var modalTitle = modalEdit.querySelector('.modal-title');
+        var titleModal = button.getAttribute('title');
+        modalTitle.textContent = titleModal;
+        modalActiveValue.disabled = false;
+        console.log("titleModal", titleModal);
+        if (titleModal == "Thêm Quyền") {
+            modalActiveValue.disabled = true;
+        }
+        else {
+            // Extract info from data-bs-* attributes
+            var id = button.getAttribute('data-permission-id')
+            var name = button.getAttribute('data-permission-name')
+            var code = button.getAttribute('data-permission-code')
+            var isActive = button.getAttribute('data-permission-active')
+            var modalIdValue = modalEdit.querySelector('#permission-id')
+            var modalNameValue = modalEdit.querySelector('#permission-name')
+            var modalCodeValue = modalEdit.querySelector('#permission-code')
+            modalIdValue.value = id;
+            modalNameValue.value = name;
+            modalCodeValue.value = code;
+            modalActiveValue.checked = (isActive == "True");
+        }
+    })
+
+    function SaveInfo() {
+        var modalTitle = document.getElementById('ModelTitle').innerHTML;
+        var id = $("#permission-id").val();
+        var name = $("#permission-name").val();
+        var code = $("#permission-code").val();
+        var isActive = $("#permission-active")[0].checked;
+        if (name == '' || code == '') {
+            alert('Vui lòng nhập đủ thông tin');
+            return;
+        }
+        if (modalTitle == "Thêm Quyền") {
+            $.ajax({
+                url: '/Admin/AddPermission',
+                type: 'POST',
+                dataType: 'text',
+                data: {
+                    id: id,
+                    Code: code,
+                    Name: name
+                }
+            }).done(function (result) {
+                var rsJson = JSON.parse(result);
+                if (rsJson.Success == true) {
+                    alert(rsJson.Message);
+                    window.location.reload();
+                    return;
+                }
+                else {
+                    alert(rsJson.Message);
+                    return;
+                }
+            });
+        }
+        else {
+            $.ajax({
+                url: '/Admin/EditPermission',
+                type: 'POST',
+                dataType: 'text',
+                data: {
+                    id: id,
+                    Code: code,
+                    Name: name,
+                    IsActive: isActive
+                }
+            }).done(function (result) {
+                var rsJson = JSON.parse(result);
+                if (rsJson.Success == true) {
+                    alert(rsJson.Message);
+                    window.location.reload();
+                    return;
+                }
+                else {
+                    alert(rsJson.Message);
+                    return;
+                }
+            });
+        }
+    }
+</script>

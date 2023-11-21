@@ -1,0 +1,170 @@
+﻿@model IEnumerable<Water_Environment.Models.Users.UserModel>
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+<div class="login">
+    <img src="~/Images/eberhard-grossgasteiger-cs0sK0gzqCU-unsplash.jpg" alt="image" class="login__bg" />
+
+    <form action="/Login/Index"
+          id="LoginForm"
+          class="login__form"
+          method="post">
+
+        <div class="contain-btn" onclick="BackToHome()">
+            <button class="btn" id="btn"><i class="ri-arrow-left-line"></i></button>
+        </div>
+
+        @* Title *@
+        @* ===================================================== *@
+        <h1 class="login__title" id="loginT">Đăng nhập tài khoản</h1>
+        @* ===================================================== *@
+        @Html.AntiForgeryToken()
+        <div class="login__inputs">
+            @* Email *@
+            <div class="login__box">
+                <input type="text"
+                       placeholder="Tài khoản" required
+                       class="login__input"
+                       id="username"
+                       name="Username"
+                       onkeydown="preventEnterKey(event)" />
+                <i class="ri-mail-fill"></i>
+            </div>
+            @* Password *@
+            <div class="login__box" id="Psw">
+                <input type="password"
+                       placeholder="Mật khẩu" required
+                       name="Password"
+                       class="login__input"
+                       id="password"
+                       onclick="preventEnterKey(event)" />
+                <div class="cont-icon">
+                    <i class="ri-eye-line" id="eye-open" onclick="toggleEyeClose()"></i>
+                    <i class="ri-eye-close-line" id="eye-close" onclick="toggleEyeOpen()"></i>
+                    <i class="ri-lock-2-fill"></i>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="login__check">-->
+            @* Remember me *@
+            <!--<div class="login__check-box">
+                <input type="checkbox" class="login__check-input" id="user-check" />
+                <label for="user-check" class="login__check-label">Remember me</label>
+            </div>-->
+            @* Forgot Password *@
+            <!--<a href="#" class="login__forgot">Forgot Password?</a>
+        </div>-->
+
+        @* Button Login *@
+        @* ========================================================== *@
+    <button type="button" class="login__button" id="loginB" onclick="LoginForm()">Đăng nhập</button>
+        @Html.ValidationSummary(false, "", new { @class = "text-danger " })
+        @* =========================================================== *@
+
+        @* Move to Register page *@
+        @* ========================================================== *@
+        <div class="login__register" id="login__register">
+            Bạn chưa có tài khoản
+            <a href="/Register/Index" id="register">Đăng ký</a>
+        </div>
+        @* ========================================================== *@
+    </form>
+</div>
+
+<script>
+    function LoginForm() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username === "" || password === "") {
+            alert("Fill in blank..!");
+        }
+        else {
+            var form = document.getElementById("LoginForm");
+            form.submit();
+            //window.location.href = "Home";
+        }
+    }
+    function BackToHome() {
+        window.location.href = "/Home/Index";
+    }
+</script>
+
+<script>
+    function toggleEyeOpen() {
+        var eyeOpen = document.getElementById("eye-open");
+        var eyeClose = document.getElementById("eye-close");
+
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        }
+
+        if (eyeClose.style.display === "block") {
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        }
+        else {
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        }
+    }
+    function toggleEyeClose() {
+        var eyeOpen = document.getElementById("eye-open");
+        var eyeClose = document.getElementById("eye-close");
+
+        var x = document.getElementById("password");
+        if (x.type === "text") {
+            x.type = "password";
+        }
+
+        if (eyeClose.style.display === "none") {
+            eyeClose.style.display = "block";
+            eyeOpen.style.display = "none";
+        }
+        else {
+            eyeClose.style.display = "none";
+            eyeOpen.style.display = "block";
+        }
+    }
+    function toggleEyeOpen2() {
+        var eyeOpen2 = document.getElementById("eye-open2");
+        var eyeClose2 = document.getElementById("eye-close2");
+
+        var y = document.getElementById("Cpassword");
+        if (y.type === "password") {
+            y.type = "text";
+        }
+        if (eyeClose2.style.display === "block") {
+            eyeClose2.style.display = "none";
+            eyeOpen2.style.display = "block";
+        }
+        else {
+            eyeClose2.style.display = "none";
+            eyeOpen2.style.display = "block";
+        }
+    }
+    function toggleEyeClose2() {
+        var eyeOpen2 = document.getElementById("eye-open2");
+        var eyeClose2 = document.getElementById("eye-close2");
+
+        var y = document.getElementById("Cpassword");
+        if (y.type === "text") {
+            y.type = "password";
+        }
+
+        if (eyeClose2.style.display === "none") {
+            eyeClose2.style.display = "block";
+            eyeOpen2.style.display = "none";
+        }
+        else {
+            eyeClose2.style.display = "none";
+            eyeOpen2.style.display = "block";
+        }
+    }
+</script>

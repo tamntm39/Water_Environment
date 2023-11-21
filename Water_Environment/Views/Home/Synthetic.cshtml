@@ -1,8 +1,108 @@
-﻿
+﻿@model IEnumerable<Water_Environment.Models.Home.CategoryContent>
+
 @{
     ViewBag.Title = "Synthetic";
     Layout = "~/Views/Shared/_MasterLayout.cshtml";
 }
 
-<h2>Synthetic</h2>
+<section>
+    <body class="u-body u-xl-mode" data-lang="en">
+        <section class="u-clearfix u-grey-10 u-section-1" id="carousel_8069">
+            <div class="u-clearfix u-sheet u-valign-middle-md u-valign-middle-sm u-valign-middle-xl u-sheet-1">
+                <div class="u-shape u-shape-rectangle u-white u-shape-1"></div>
+                <div class="u-image u-image-circle u-image-1" data-image-width="1100" data-image-height="1050"></div>
+                <div class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-expanded-width-sm u-expanded-width-xs u-group u-shape-rectangle u-group-1">
+                    <div class="u-align-left u-container-style u-custom-item u-list-item u-palette-1-light-2 u-repeater-item u-shape-rectangle">
+                        <div class="u-container-layout u-valign-middle u-container-layout-1">
+                            <h3 class="u-text u-text-1">Giới thiệu </h3>
+                            <p class="u-text u-text-2"><h4>Chào mừng bạn đến với trang web của chúng tôi, nơi chúng tôi tôn vinh và chia sẻ thông tin quý báu về bảo vệ nguồn nước và bảo vệ môi trường. Nước là nguồn tài nguyên quý báu và không thể thiếu trong cuộc sống của chúng ta. Tuy nhiên, sự ô nhiễm nước ngày càng gia tăng và đe dọa tới sự sống và sức khỏe của hàng triệu người trên toàn cầu cũng như sự sinh tồn của các loài động vật và thực vật trong môi trường tự nhiên.</p>
+                            </h4></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="u-expanded-width u-list u-list-1">
+                    <div class="u-repeater u-repeater-1">
+                        <div class="u-align-left u-container-style u-custom-item u-list-item u-palette-1-light-1 u-repeater-item u-shape-rectangle">
+                            <div class="u-container-layout u-similar-container u-valign-top u-container-layout-2">
+                                <h3 class="u-custom-font u-custom-item u-font-montserrat u-text u-text-body-alt-color u-text-default u-text-4">01 Giải thích </h3>
+                                <p class="u-custom-item u-text u-text-5">
+                                    <h4>
+                                        Chúng ta cần hiểu rõ tầm quan trọng của nguồn nước trong cuộc sống hàng ngày và tác động của chúng ta lên nó. Chúng ta cũng cần nhận thức về những hậu quả của sự ô nhiễm nước, từ việc tiêu thụ nước không cần thiết đến việc xả thải công nghiệp và thải rác sinh hoạt.<br>
+                                    </h4>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="u-align-left u-container-style u-custom-item u-list-item u-palette-1-light-3 u-repeater-item u-shape-rectangle">
+                            <div class="u-container-layout u-similar-container u-valign-top u-container-layout-3">
+                                <h3 class="u-custom-font u-custom-item u-font-montserrat u-text u-text-default u-text-6">02 Mục tiêu </h3>
+                                <p class="u-custom-item u-text u-text-palette-1-base u-text-7">
+                                    <h4>
+                                        Trang web của chúng tôi sẽ giúp bạn hiểu hơn về tình trạng hiện tại của nguồn nước trên trái đất, những vấn đề chính liên quan đến ô nhiễm nước, và cách mà mỗi cá nhân, tổ chức và cộng đồng có thể đóng góp vào việc bảo vệ nguồn nước và môi trường. Chúng ta có trách nhiệm chung để tạo ra một tương lai bền vững và xanh sạch cho thế hệ tới.<br>
+                                    </h4>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="u-align-left u-container-style u-custom-item u-list-item u-palette-1-base u-repeater-item u-shape-rectangle">
+                            <div class="u-container-layout u-similar-container u-valign-top u-container-layout-4">
+                                <h3 class="u-custom-font u-custom-item u-font-montserrat u-text u-text-body-alt-color u-text-default u-text-8">03 Kết thúc </h3>
+                                <p class="u-custom-item u-text u-text-9">
+                                    <h4>
+                                        Hãy cùng nhau khám phá và hành động để bảo vệ nguồn nước, làm cho nó trở nên sạch hơn, và duy trì cuộc sống xanh - mục tiêu quý báu của chúng tôi.<br>
+                                    </h4>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <style>
+            .u-disable-duration * {
+                transition-duration: 0s !important;
+            }
+        </style>
+    </body>
+</section>
+<script>
+    if (window.parent) {
+        var _w = 0, _h = 0;
+        var updateFormSize = function () {
+            var form = $('form.shaped-form-extended,form.shaped-form');
+            var w = form.outerWidth(true);
+            var h = form.outerHeight(true);
+            if (Math.abs(_w - w) > 5 || Math.abs(_h - h) > 5) {
+                _w = w;
+                _h = h;
+                var msg = { key: 'login-frame-size', width: w, height: h };
+                window.parent.postMessage(msg, "*");
+            }
+            setTimeout(updateFormSize, 300);
+        }
+        updateFormSize();
+    }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" type="text/css" href="~/Content/head.css" />
+<link rel="stylesheet" href="~/Content/2.css" media="screen">
+<link rel="stylesheet" href="~/Content/1.css" media="screen">
+<link rel="stylesheet" href="~/Content/3.css" media="screen">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700"
+      rel="stylesheet" />
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>

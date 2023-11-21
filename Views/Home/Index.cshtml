@@ -1,0 +1,104 @@
+﻿@model Water_Environment.Models.Home.NewAndActivitiesHome
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+@* Body *@
+<div class="banner">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Images/beach_img_1.jpg" alt="Image of Bannner" />
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/beach_img_2.jpg" alt="Image of Bannner" />
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/ocean.jpg" alt="Image of Bannner" />
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/explored-hires.jpg" alt="Image of Banner" />
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+    </div>
+</div>
+
+<div class="page-heading">
+    <div class="container-box">
+        <h2>TIN MỚI NHẤT</h2>
+    </div>
+
+    <div class="container-box">
+        <div class="popular-container">
+            @foreach (var itemContent in Model.NewsLatest)
+            {
+                <div class="box-wrap" itemprop="event" itemscope>
+                    <div class="img-wrap">
+                        <img src="@Url.Content(@itemContent.Img)" alt="courses picture" />
+                    </div>
+                    <a href="/ActivitiesNews/Content/@itemContent.id"
+                       class="learn-desining-banner"
+                       target="_blank">Xem ngay</a>
+                    <div class="box-body">
+                        <p>
+                            @itemContent.ShortDescription
+                        </p>
+                        <section>
+                            <p><span>Ngày:</span> @itemContent.CreateOn</p>
+                        </section>
+                    </div>
+                </div>
+            } 
+        </div>
+    </div>
+
+</div>
+
+<div class="page-heading">
+    <div class="container-box">
+        <h2>TIN XEM NHIỀU</h2>
+    </div>
+
+    <div class="container-box">
+        <div class="popular-container">
+
+            @foreach (var itemContent in Model.NewsHot)
+            {
+                <div class="box-wrap" itemprop="event" itemscope>
+                    <div class="img-wrap">
+                        <img src="@Url.Content(@itemContent.Img)" alt="courses picture" />
+                    </div>
+                    <a href="/ActivitiesNews/Content/@itemContent.id"
+                       class="learn-desining-banner"
+                       target="_blank">Xem ngay</a>
+                    <div class="box-body">
+                        <p>
+                            @itemContent.ShortDescription
+                        </p>
+                        <section>
+                            <p><span>Ngày:</span> @itemContent.CreateOn</p>
+                        </section>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+

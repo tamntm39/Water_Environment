@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using Water_Environment.Core;
 using Water_Environment.Models;
 using Water_Environment.Models.Users;
 
@@ -32,8 +33,9 @@ namespace Water_Environment.Controllers
         {
             if (ModelState.IsValid)
             {
+                string password = Extension.GetMd5Hash(user.Password);
                 User userDb = _db.Users.FirstOrDefault(u => u.UserName.ToLower() == user.Username.ToLower() && u
-               .PassWord == user.Password);
+               .PassWord == password);
                 if (userDb != null && userDb.UserPermission == 1)
                 {
                     FormsAuthentication.SetAuthCookie(user.Username, false);

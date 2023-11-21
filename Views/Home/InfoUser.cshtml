@@ -1,0 +1,175 @@
+﻿@model Water_Environment.Models.User
+
+@{
+    ViewBag.Title = "InfoUser";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<style>
+    body {
+        background: #f7f7f7;
+    }
+
+    .section-title {
+        text-align: center;
+        padding: 25px 0;
+    }
+
+        .section-title h2 {
+            font-size: 60px;
+            text-transform: uppercase;
+            font-family: oswald;
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0, 0, 0.1);
+        }
+
+            .section-title h2 span {
+                color: #1089ff;
+            }
+
+
+
+    .contact-form {
+        background-color: #87cefa;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 40px 30px;
+    }
+
+        .contact-form .btn {
+            background: #1089ff;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 10px 50px;
+            letter-spacing: 2px;
+        }
+
+    .map-area {
+        width: 600px;
+        height: 465px;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+        .map-area iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+    .contact-area {
+        background-image: url('./Images/nềnLiênHê.jpg');
+    }
+</style>
+<div class="contact-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="section-title">
+                    <h2>THÔNG TIN<span> TÀI KHOẢN</span> VÀ <span>ỦNG HỘ</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="contact-form">
+                    <form action="/Home/InfoUser"
+                          id="UpdateInfo"
+                          method="post">
+                        <input class="form-control" name="id" id="username" value="@Model.id" hidden>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Tài khoản</label>
+                            <input type="email" class="form-control" name="UserName" id="username" aria-describedby="emailHelp" value="@Model.UserName" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="Email" id="email" value="@Model.Email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input type="password" class="form-control" name="Password" id="u-password" placeholder="Nhập mật khẩu mới tại đây nếu muốn đổi">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password-confirm" class="form-label">Xác nhận mật khẩu</label>
+                            <input type="password" class="form-control" id="u-password-confirm" placeholder="Xác nhận mật khẩu mới tại đây">
+                        </div>
+                        <button class="btn" type="button" onclick="UpdateInfo()">Cập nhật</button>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger " })
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom:30px">
+                <table class="table table-bordered border-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">DonateID</th>
+                            <th scope="col">Nội dung</th>
+                            <th scope="col">Số tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var donate in ViewBag.lstDonate)
+                        {
+                            <tr>
+                                <td>@donate.DonateId</td>
+                                <td>@donate.Content</td>
+                                <td>@donate.MoneyDonate</td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>*@
+<script>
+    function UpdateInfo() {
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("u-password").value;
+        var Cpassword = document.getElementById("u-password-confirm").value;
+
+        if (username === "" || email === "") {
+            alert("Yêu cầu điền đầy đủ thông tin!");
+        }
+        //else if (password.length < 8) {
+        //    alert("Mật khẩu cầu ít nhất 8 kí tự!");
+        //}
+        else if ((password != "" || Cpassword != "") && password !== Cpassword) {
+            alert("Mật khẩu xác nhận không giống mật khẩu đăng ký!")
+        }
+        else {
+            var form = document.getElementById("UpdateInfo");
+            form.submit();
+        }
+    }
+</script>
+
+
+
+@*<h2>InfoUser</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Tài khoản</label>
+                        <input type="email" class="form-control" id="i-username" aria-describedby="emailHelp" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="u-email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" id="u-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>*@

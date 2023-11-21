@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Water_Environment.Models.ActivitiesAndNew>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+
+<div class="page-heading">
+    <div class="container-box">
+        <h2>TÌM KIẾM</h2>
+    </div>
+
+    <div class="container-box">
+        <div class="popular-container" style="justify-content: center; flex-wrap : wrap">
+            @foreach (var itemContent in Model)
+            {
+                <div class="box-wrap" itemprop="event" itemscope>
+                    <div class="img-wrap">
+                        <img src="@Url.Content(@itemContent.Img)" alt="courses picture" />
+                    </div>
+                    <a href="/ActivitiesNews/Content/@itemContent.id"
+                       class="learn-desining-banner"
+                       target="_blank">Xem ngay</a>
+                    <div class="box-body">
+                        <strong>
+                            @itemContent.Title
+                        </strong>
+                        <p>
+                            @itemContent.ShortDescription
+                        </p>
+                        <section>
+                            <p><span>Ngày:</span> @itemContent.CreateOn</p>
+                        </section>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

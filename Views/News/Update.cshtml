@@ -1,0 +1,182 @@
+﻿
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/_MasterLayout.cshtml";
+}
+
+
+@* Header *@
+<div class="header">
+    <div class="head-left">
+        <div class="head-left-email">
+            <a href="mailto:info@educationpro.com">
+                <i class='bx bx-envelope bx-tada'></i> nhom12@gmail.com
+            </a>
+        </div>
+        <div class="head-left-phone">
+            <a href="tel:+9779813639131">
+                <i class='bx bxs-phone bx-tada'></i> 0818202648
+            </a>
+        </div>
+    </div>
+
+    <div class="box">
+        <input type="text" placeholder="Search...">
+        <a><i class='bx bx-search-alt-2 bx-tada'></i></a>
+    </div>
+
+    <div class="head-right">
+        <div class="login-block">
+            <a href="Index"><i class='bx bx-user-circle'></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="main-header" id="myHeader">
+    <div class="container">
+        <div class="logo-wrap">
+            <img src="~/Images/logo_home.png" alt="Logo Image" />
+        </div>
+        <div class="nav-wrap">
+            <nav class="nav-desktop">
+                <ul class="menu-list">
+                    <li><a href="#">Trang chủ</a></li>
+                    <li class="menu-parent">
+                        Giới thiệu
+                        <ul class="sub-menu">
+                            <li><a href="#">Tổng quát</a></li>
+                            <li><a href="#">Thông tin nhóm</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-parent">
+                        Hoạt động
+                        <ul class="sub-menu">
+                            <li><a href="#">Đại dương</a></li>
+                            <li><a href="#">Nước ngọt</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-parent">
+                        Tin tức
+                        <ul class="sub-menu">
+                            <li>
+                                @Html.ActionLink("Cập nhật mới nhất", "Update", "News");
+                            </li>
+                            <li>
+                                @Html.ActionLink("Câu chuyện của chúng tôi", "Story", "News");
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="">Tham gia</a></li>
+                    <li><a href="">Liên hệ</a></li>
+                </ul>
+            </nav>
+            <div id="bar">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="close">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="bg_img">
+        <img src="~/Images/Environment-Lake-River_Sunrise_Sunset_1043560968-scaled.jpg"
+             alt="Alternate Text" />
+        <div class="text-block">
+            <h1>Cập nhật mới nhất</h1>
+        </div>
+    </div>
+    <br />
+
+    <div style="text-align: center;">
+        <h2>Đọc tin tức mới nhất của chúng tôi</h2>
+    </div>
+    <br />
+
+
+    <div class="container-box">
+        <div class="popular-container">
+
+            <div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+                <div class="img-wrap">
+                    <img src="~/Images/742977548964.jpg" alt="courses picture" />
+                </div>
+                <div class="headTitle">
+                    <a href="~/News/BaiBao" class="content">Thực trạng ô nhiễm môi trường nước ta hiện nay</a>
+                </div>
+
+                <div class="box-body">
+                    <p>
+                        Một vấn đề nóng bỏng, gây bức xúc trong dư luận xã hội cả nước hiện nay là
+                        tình trạng ô nhiễm môi trường sinh thái do các hoạt động sản xuất và sinh
+                        hoạt của con người gây ra. Vấn đề này ngày càng trầm trọng, đe doạ trực tiếp
+                        sự phát triển kinh tế - xã hội bền vững, sự tồn tại, phát triển của các thế
+                        hệ hiện tại và tương lai. Đối tượng gây ô nhiễm môi trường chủ yếu là hoạt
+                        động sản xuất của nhà máy trong các khu công nghiệp, hoạt động làng nghề và
+                        sinh hoạt tại các đô thị lớn. . .
+                    </p>
+                    <section class="source">
+                        <p><span>Theo </span> bộ TNMT</p>
+                    </section>
+                </div>
+            </div>
+
+            <div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+                <div class="img-wrap">
+                    <img src="~/Images/663043006587.jpg" alt="courses picture" />
+                </div>
+                <div class="headTitle">
+                    <a href="~/News/BaiBao" class="content">Kênh rạch tại thành phố Hồ Chí Minh đang ô nhiễm nghiêm trọng</a>
+                </div>
+                <div class="box-body">
+                    <p>
+                        Tình trạng ô nhiễm kênh rạch tại TP Hồ Chí Minh vẫn là điểm nóng hiện nay.
+                        Mặc dù chính quyền thành phố đã có sự đầu tư lớn để xây kè, làm đường trồng
+                        cây, đưa các loại máy móc hiện đại nhằm hạn chế ô nhiễm nguồn nước trong kè.
+                        Tuy nhiên, số lượng các công trình trọng điểm như kênh Nhiêu Lộc – Thị Nghè,
+                        kênh Tân Hóa – Lò Gốm, kệnh Tàu Hủ - Bến Nghé, còn lại đa số vẫn còn ô nhiễm
+                        trầm trọng, rác thải ngập tràn cả lên bờ.
+                    </p>
+                    <section class="source">
+                        <p><span>Theo </span> Tinmoitruong</p>
+                    </section>
+                </div>
+            </div>
+
+            <div class="box-wrap" itemprop="event" itemscope itemtype=" http://schema.org/Course">
+                <div class="img-wrap">
+                    <img src="~/Images/s1.jpg" alt="courses picture" />
+                </div>
+                <a href="http://dwrm.gov.vn/index.php?language=vi&nv=news&op=Hoat-dong-cua-Cuc-Tin-lien-quan/Nuoc-thai-o-nhiem-dang-khien-2-000-con-song-chet-dan-7083"
+                   class="learn-desining-banner"
+                   target="_blank">Báo môi trường >>></a>
+
+                <div class="box-body">
+                    <p>
+                        ...
+                    </p>
+                    <section>
+                        <p><span>Ngày:</span> ##/##/####</p>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+        @*<div>
+
+            <div class="box-item">
+                <img src="~/Images/742977548964.jpg" alt="Alternate Text" />
+                <h3>Thực trạng ô nhiễm môi trường nước ta hiện nay</h3>
+                <p>
+
+                </p>
+            </div>
+        </div>*@
+</div>

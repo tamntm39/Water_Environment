@@ -1,0 +1,48 @@
+﻿body {
+}
+
+
+.contain{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    
+}
+.title{
+    color: dimgray;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    font-size: 60px;
+}
+.detail{
+    width: 1000px;
+    padding-left: 70px;
+    padding-right: 80px;
+    font-family: serif;
+}
+    .detail h5{
+        line-height: 1.5;
+        text-align: justify;
+    }
+
+@media screen and (max-width: 750px) {
+    .title{
+        font-size: 50px;
+    }
+    .contain .img{
+        background-size: 100px;
+        padding-bottom: 30px;
+    }
+    .detail{
+        padding-left: 30px;
+        padding-right: 20px;
+    }
+    .contain {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap-reverse;
+        /*width: 443px;*/
+        margin-bottom: 50px;
+    }
+}

@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .suggestions {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 350px;
+            max-height: 160px;
+            overflow: auto;
+            border: 1px solid whitesmoke;
+            top: 37px;
+            left: 0px;
+            border-top: 25px;
+            border-radius: 5px;
+            padding-top: 0px;
+            z-index: 0;
+        }
+
+            .suggestions a {
+                padding: 8px 5px 5px 39px;
+                text-decoration: none;
+                display: block;
+                color: black;
+            }
+
+                .suggestions a:hover {
+                    background-color: grey;
+                }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #myUL {
+            list-style-type: none;
+            padding: 0px;
+            margin: 0;
+        } 
+    </style>
+</head>
+<body>
+    <div class="box">
+        <input type="search"
+               placeholder="Search..."
+               spellcheck="false"
+               list="options"
+               required
+               size="15"
+               minlength="4"
+               maxlength="100"
+               id="search"
+               onkeydown="preventEnterKey(event)"
+               @*oninput="myFunction(this.value)"*@>
+               <a><i class='bx bx-search-alt-2 bx-tada'></i></a>
+    </div>
+
+
+    <script>
+        document.querySelector('a').addEventListener('click', search);
+        function preventEnterKey(event) {
+            var searchValue = document.getElementById("search").value;
+            if (event.key === "Enter") {
+                if (searchValue === "") {
+                    //event.preventDefault();
+                    alert("Vui lòng nhập trước khi nhấn Enter!");
+                }
+                else {
+                    window.location.href = "/Home/Search?keySearch=" + searchValue;
+                }
+            }
+        }
+        function search() {
+            var searchValue = document.getElementById("search").value;
+            if (searchValue === "") { 
+                alert("Vui lòng nhập trước khi nhấn bấm tìm kiếm");
+            }
+            else {
+                window.location.href = "/Home/Search?keySearch=" + searchValue;
+            }
+        }
+    </script>
+</body>
+</html>
+
+

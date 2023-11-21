@@ -61,7 +61,7 @@ namespace Water_Environment.Controllers
 
             //Build URL for VNPAY
             VnPayLibrary vnpay = new VnPayLibrary();
-            var Price = donate.MoneyDonate;
+            var Price = donate.MoneyDonate * 100;
             vnpay.AddRequestData("vnp_Version", VnPayLibrary.VERSION);
             vnpay.AddRequestData("vnp_Command", "pay");
             vnpay.AddRequestData("vnp_TmnCode", vnp_TmnCode);
